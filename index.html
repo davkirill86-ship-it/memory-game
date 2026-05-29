@@ -3,52 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Найди пару - Игра памяти</title>
+    <meta name="description" content="Найди пару - увлекательная игра памяти для детей и взрослых">
+    <meta name="theme-color" content="#667eea">
+    <title>🎮 Найди пару - Игра Памяти</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Основной экран игры -->
-    <div id="gameScreen" class="screen">
-        <div class="game-container">
-            <h1>🎮 Найди пару</h1>
-            <div class="game-info">
-                <div class="info-item">Найдено: <span id="foundCount">0</span>/6</div>
-                <div class="info-item">Ходов: <span id="moveCount">0</span></div>
-            </div>
-            <div id="gameBoard" class="game-board"></div>
-            <button id="resetButton" class="btn-primary">Начать заново</button>
-        </div>
-    </div>
-
-    <!-- Экран аутентификации -->
+    <!-- ============================================ -->
+    <!-- ЭКРАН АУТЕНТИФИКАЦИИ -->
+    <!-- ============================================ -->
     <div id="authScreen" class="screen active">
         <div class="auth-container">
             <h1>🎮 Найди пару</h1>
+            <p style="text-align: center; color: #666; margin-bottom: 30px;">Игра памяти для детей 7+</p>
+
             <div class="auth-tabs">
                 <button class="tab-btn active" data-tab="login">Вход</button>
                 <button class="tab-btn" data-tab="register">Регистрация</button>
             </div>
 
+            <!-- Вкладка входа -->
             <div id="loginTab" class="tab-content active">
                 <form id="loginForm">
-                    <input type="email" placeholder="Email" required>
-                    <input type="password" placeholder="Пароль" required>
-                    <button type="submit" class="btn-primary">Вход</button>
+                    <input type="email" placeholder="📧 Email" required>
+                    <input type="password" placeholder="🔐 Пароль" required>
+                    <button type="submit" class="btn-primary">🔓 Вход</button>
                 </form>
             </div>
 
+            <!-- Вкладка регистрации -->
             <div id="registerTab" class="tab-content">
                 <form id="registerForm">
-                    <input type="text" placeholder="Имя" required>
-                    <input type="email" placeholder="Email" required>
-                    <input type="password" placeholder="Пароль" required>
-                    <button type="submit" class="btn-primary">Регистрация</button>
+                    <input type="text" placeholder="👤 Имя" required>
+                    <input type="email" placeholder="📧 Email" required>
+                    <input type="password" placeholder="🔐 Пароль" required>
+                    <button type="submit" class="btn-primary">✍️ Зарегистрироваться</button>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- Главное меню -->
+    <!-- ============================================ -->
+    <!-- ГЛАВНОЕ МЕНЮ -->
+    <!-- ============================================ -->
     <div id="mainMenuScreen" class="screen">
         <div class="main-menu-container">
             <div class="main-menu-header">
@@ -57,58 +54,67 @@
             </div>
 
             <div class="main-menu-grid">
+                <!-- Основная игра -->
                 <div class="menu-item" onclick="openSection('game')">
                     <div class="menu-icon">🎮</div>
-                    <div class="menu-title">Игра</div>
-                    <div class="menu-desc">Классический режим</div>
+                    <div class="menu-title">Классическая Игра</div>
+                    <div class="menu-desc">Найди все пары эмодзи</div>
                 </div>
 
+                <!-- Достижения -->
                 <div class="menu-item" onclick="openSection('achievements')">
                     <div class="menu-icon">🎖️</div>
                     <div class="menu-title">Достижения</div>
-                    <div class="menu-desc">50+ наград</div>
+                    <div class="menu-desc">50+ наград и бейджей</div>
                 </div>
 
+                <!-- Челленджи -->
                 <div class="menu-item" onclick="openSection('challenges')">
                     <div class="menu-icon">📅</div>
                     <div class="menu-title">Челленджи</div>
-                    <div class="menu-desc">Ежедневные задачи</div>
+                    <div class="menu-desc">Ежедневные и еженедельные задачи</div>
                 </div>
 
+                <!-- Лидерборды -->
                 <div class="menu-item" onclick="openSection('leaderboards')">
                     <div class="menu-icon">🏆</div>
                     <div class="menu-title">Лидерборды</div>
-                    <div class="menu-desc">Топ игроков</div>
+                    <div class="menu-desc">Топ игроков мира</div>
                 </div>
 
+                <!-- Косметика -->
                 <div class="menu-item" onclick="openSection('cosmetics')">
                     <div class="menu-icon">🎨</div>
                     <div class="menu-title">Косметика</div>
-                    <div class="menu-desc">Оформление карточек</div>
+                    <div class="menu-desc">Оформление и скины карточек</div>
                 </div>
 
+                <!-- Наборы карт -->
                 <div class="menu-item" onclick="openSection('card-sets')">
                     <div class="menu-icon">🔀</div>
-                    <div class="menu-title">Наборы карт</div>
-                    <div class="menu-desc">Разные темы</div>
+                    <div class="menu-title">Наборы Карт</div>
+                    <div class="menu-desc">Животные, предметы, флаги и еще...</div>
                 </div>
 
+                <!-- Режимы игры -->
                 <div class="menu-item" onclick="openSection('modes')">
-                    <div class="menu-icon">🎮</div>
+                    <div class="menu-icon">⏱️</div>
                     <div class="menu-title">Режимы</div>
-                    <div class="menu-desc">Классик, время, выживание</div>
+                    <div class="menu-desc">Классик, на время, выживание</div>
                 </div>
 
+                <!-- Арена (Мультиплеер) -->
                 <div class="menu-item" onclick="openSection('arena')">
                     <div class="menu-icon">⚔️</div>
                     <div class="menu-title">Арена</div>
-                    <div class="menu-desc">Мультиплеер</div>
+                    <div class="menu-desc">Онлайн турниры и баттлы</div>
                 </div>
 
+                <!-- Социум -->
                 <div class="menu-item" onclick="openSection('social')">
                     <div class="menu-icon">👥</div>
                     <div class="menu-title">Социум</div>
-                    <div class="menu-desc">Друзья и челленджи</div>
+                    <div class="menu-desc">Друзья, чат и совместные игры</div>
                 </div>
             </div>
 
@@ -118,6 +124,40 @@
         </div>
     </div>
 
+    <!-- ============================================ -->
+    <!-- ЭКРАН ИГРЫ -->
+    <!-- ============================================ -->
+    <div id="gameScreen" class="screen">
+        <div class="game-container">
+            <h1>🎮 Найди пару</h1>
+            
+            <div class="game-info">
+                <div class="info-item">
+                    <div style="font-size: 12px; color: #999;">Найдено</div>
+                    <div style="font-size: 24px; font-weight: bold; color: #667eea;">
+                        <span id="foundCount">0</span>/6
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div style="font-size: 12px; color: #999;">Ходов</div>
+                    <div style="font-size: 24px; font-weight: bold; color: #764ba2;">
+                        <span id="moveCount">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="gameBoard" class="game-board"></div>
+
+            <div style="display: flex; gap: 10px;">
+                <button id="resetButton" class="btn-primary" style="flex: 1;">🔄 Начать заново</button>
+                <button onclick="showMainMenu()" class="btn-secondary" style="flex: 1;">⬅️ Меню</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- СКРИПТЫ -->
+    <!-- ============================================ -->
     <script src="script.js"></script>
     <script src="integration.js"></script>
     <script src="achievements.js"></script>
