@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Найди пару - Игра памяти</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Основной экран игры -->
+    <div id="gameScreen" class="screen">
+        <div class="game-container">
+            <h1>🎮 Найди пару</h1>
+            <div class="game-info">
+                <div class="info-item">Найдено: <span id="foundCount">0</span>/6</div>
+                <div class="info-item">Ходов: <span id="moveCount">0</span></div>
+            </div>
+            <div id="gameBoard" class="game-board"></div>
+            <button id="resetButton" class="btn-primary">Начать заново</button>
+        </div>
+    </div>
+
+    <!-- Экран аутентификации -->
+    <div id="authScreen" class="screen active">
+        <div class="auth-container">
+            <h1>🎮 Найди пару</h1>
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">Вход</button>
+                <button class="tab-btn" data-tab="register">Регистрация</button>
+            </div>
+
+            <div id="loginTab" class="tab-content active">
+                <form id="loginForm">
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Пароль" required>
+                    <button type="submit" class="btn-primary">Вход</button>
+                </form>
+            </div>
+
+            <div id="registerTab" class="tab-content">
+                <form id="registerForm">
+                    <input type="text" placeholder="Имя" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Пароль" required>
+                    <button type="submit" class="btn-primary">Регистрация</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Главное меню -->
+    <div id="mainMenuScreen" class="screen">
+        <div class="main-menu-container">
+            <div class="main-menu-header">
+                <h1>👋 Добро пожаловать, <span id="userName">игрок</span>!</h1>
+                <p>Выбери режим игры</p>
+            </div>
+
+            <div class="main-menu-grid">
+                <div class="menu-item" onclick="openSection('game')">
+                    <div class="menu-icon">🎮</div>
+                    <div class="menu-title">Игра</div>
+                    <div class="menu-desc">Классический режим</div>
+                </div>
+
+                <div class="menu-item" onclick="openSection('achievements')">
+                    <div class="menu-icon">🎖️</div>
+                    <div class="menu-title">Достижения</div>
+                    <div class="menu-desc">50+ наград</div>
+                </div>
+
+                <div class="menu-item" onclick="openSection('challenges')">
+                    <div class="menu-icon">📅</div>
+                    <div class="menu-title">Челленджи</div>
+                    <div class="menu-desc">Ежедневные задачи</div>
+                </div>
+
+                <div class="menu-item" onclick="openSection('leaderboards')">
+                    <div class="menu-icon">🏆</div>
+                    <div class="menu-title">Лидерборды</div>
+                    <div class="menu-desc">Топ игроков</div>
+                </div>
+
+                <div class="menu-item" onclick="openSection('cosmetics')">
+                    <div class="menu-icon">🎨</div>
+                    <div class="menu-title">Косметика</div>
+                    <div class="menu-desc">Оформление карточек</div>
+                </div>
+
+                <div class="menu-item" onclick="openSection('card-sets')">
+                    <div class="menu-icon">🔀</div>
+                    <div class="menu-title">Наборы карт</div>
+                    <div class="menu-desc">Разные темы</div>
+                </div>
+
+                <div class="menu-item" onclick="openSection('modes')">
+                    <div class="menu-icon">🎮</div>
+                    <div class="menu-title">Режимы</div>
+                    <div class="menu-desc">Классик, время, выживание</div>
+                </div>
+
+                <div class="menu-item" onclick="openSection('arena')">
+                    <div class="menu-icon">⚔️</div>
+                    <div class="menu-title">Арена</div>
+                    <div class="menu-desc">Мультиплеер</div>
+                </div>
+
+                <div class="menu-item" onclick="openSection('social')">
+                    <div class="menu-icon">👥</div>
+                    <div class="menu-title">Социум</div>
+                    <div class="menu-desc">Друзья и челленджи</div>
+                </div>
+            </div>
+
+            <div class="main-menu-footer">
+                <button class="btn-secondary" onclick="logoutUser()">🚪 Выход</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="integration.js"></script>
+    <script src="achievements.js"></script>
+    <script src="challenges.js"></script>
+    <script src="leaderboards.js"></script>
+    <script src="cosmetics.js"></script>
+    <script src="card-sets.js"></script>
+    <script src="game-modes.js"></script>
+    <script src="arena.js"></script>
+    <script src="social-quests.js"></script>
+</body>
+</html>
