@@ -1,0 +1,48 @@
+
+/* 🎨 ФАЗА 4: КОСМЕТИКА */
+#cosmeticsSection { margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #e8eaf6 0%, #f3e5f5 100%); border-radius: 15px; border-left: 5px solid #9c27b0; }
+.cosmetics-shop { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; margin-top: 15px; }
+.cosmetic-item { background: white; border-radius: 10px; padding: 12px; text-align: center; cursor: pointer; border: 2px solid #e0e0e0; transition: all 0.3s; }
+.cosmetic-item:hover { transform: translateY(-5px); box-shadow: 0 6px 20px rgba(156, 39, 176, 0.2); }
+.cosmetic-item.unlocked { border-color: #9c27b0; }
+.cosmetic-item.locked { opacity: 0.6; filter: grayscale(100%); }
+.cosmetic-icon { font-size: 32px; margin-bottom: 8px; }
+.cosmetic-price { font-size: 11px; color: #666; margin-top: 8px; }
+
+/* 🔀 ФАЗА 5: НАБОРЫ КАРТОЧЕК */
+#cardSetsSection { margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%); border-radius: 15px; border-left: 5px solid #009688; }
+.card-sets { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px; }
+.card-set { background: white; border-radius: 10px; padding: 12px; text-align: center; cursor: pointer; border: 2px solid #b2dfdb; }
+.card-set.active { border-color: #009688; background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%); }
+
+/* 🎮 ФАЗА 6: РЕЖИМЫ */
+#modesSection { margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%); border-radius: 15px; border-left: 5px solid #e91e63; }
+.modes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; }
+.mode-card { background: white; border-radius: 10px; padding: 12px; text-align: center; cursor: pointer; border: 2px solid #f8bbd0; transition: all 0.3s; }
+.mode-card.active { border-color: #e91e63; font-weight: bold; }
+.mode-multiplier { font-size: 12px; color: #e91e63; font-weight: bold; }
+
+/* ⚔️ ФАЗА 7: АРЕНА */
+#arenaSection { margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #ffe0b2 0%, #ffcc80 100%); border-radius: 15px; border-left: 5px solid #ff6f00; }
+.arena-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 12px; }
+.arena-stat { background: white; padding: 12px; border-radius: 10px; text-align: center; border: 2px solid #ff6f00; }
+.arena-rank { font-size: 48px; margin: 10px 0; }
+.arena-rating { color: #ff6f00; font-weight: bold; font-size: 20px; }
+
+/* 👥 ФАЗА 8: СОЦИАЛ И КВЕСТЫ */
+#socialSection { margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #f1f8e9 0%, #dcedc8 100%); border-radius: 15px; border-left: 5px solid #689f38; }
+.quests-list { display: flex; flex-direction: column; gap: 12px; }
+.quest-card { background: white; padding: 15px; border-radius: 10px; border-left: 4px solid #689f38; }
+.quest-progress { width: 100%; height: 8px; background: #f0f0f0; border-radius: 4px; margin-top: 10px; }
+.quest-progress-bar { height: 100%; background: linear-gradient(90deg, #689f38, #558b2f); transition: width 0.3s; }
+
+/* Валюта */
+.currency { display: flex; gap: 15px; padding: 12px; background: white; border-radius: 10px; margin: 15px 0; }
+.currency-item { display: flex; align-items: center; gap: 8px; font-weight: bold; }
+.coins-icon { color: #ffc107; font-size: 20px; }
+.crystals-icon { color: #e91e63; font-size: 20px; }
+
+@media (max-width: 480px) {
+    .cosmetics-shop { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
+    .arena-stat { grid-template-columns: 1fr; }
+}
