@@ -3,16 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Найди пару - увлекательная игра памяти для детей и взрослых">
+    <meta name="description" content="Найди пару - увлекательная игра памяти для детей и взрослых с комбо-системой, бонусами и рейтингом">
     <meta name="theme-color" content="#667eea">
     <title>🎮 Найди пару - Игра Памяти</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- ============================================ -->
+    <!-- ГЛАВНАЯ СТРАНИЦА С ОПИСАНИЕМ -->
+    <!-- ============================================ -->
+    <div id="landingScreen" class="screen active">
+        <div class="landing-container">
+            <div class="landing-header">
+                <h1>🎮 Найди пару!</h1>
+                <div class="header-badge">⭐</div>
+            </div>
+
+            <p class="landing-tagline">Развлекательная игра с комбо-системой, бонусами и рейтингом. Найди пары эмодзи и стань Суперхероем! ⭐</p>
+
+            <div style="text-align: center; margin: 30px 0;">
+                <button onclick="showScreen('authScreen')" class="btn-primary" style="padding: 16px 40px; font-size: 18px;">🚀 Начать игру</button>
+            </div>
+
+            <h2 style="text-align: center; color: #333; margin-top: 50px;">📚 Как играть</h2>
+
+            <div class="features-grid">
+                <!-- Ряд 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <div class="feature-title">Основные правила</div>
+                    <div class="feature-desc">Кликай по карточкам и найди все пары эмодзи. Меньше ходов - больше очков!</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-title">Комбо-система</div>
+                    <div class="feature-desc">Несколько правильных ходов подряд = комбо бонус! Собирай комбо и получай множители очков!</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🍎</div>
+                    <div class="feature-title">Бонусные карты</div>
+                    <div class="feature-desc">Специальные карты дают баффы: +2 очка за ход, замораживание времени, двойные очки!</div>
+                </div>
+
+                <!-- Ряд 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <div class="feature-title">Челленджи Чемпиона</div>
+                    <div class="feature-desc">Выполняй ежедневные и еженедельные задачи. Получай награды и прокачивай свой уровень!</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <div class="feature-title">Ранг-система</div>
+                    <div class="feature-desc">От Новичка до Суперменa! Каждый ранг открывает новые возможности и награды.</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <div class="feature-title">Мини-игры</div>
+                    <div class="feature-desc">Классик, Блиц, Выживание, На время. Выбери свой режим и покажи свой скилл!</div>
+                </div>
+
+                <!-- Ряд 3: ФАЗЫ -->
+                <div class="feature-card phase-card">
+                    <div class="feature-icon">🎖️</div>
+                    <div class="feature-title">ФАЗА 1: Система Достижений (50+)</div>
+                    <div class="feature-desc">Разблокируй 50+ уникальных бейджей и достижений. Каждое достижение - это вызов!</div>
+                </div>
+
+                <div class="feature-card phase-card">
+                    <div class="feature-icon">📅</div>
+                    <div class="feature-title">ФАЗА 2: Челленджи (Ежедневные/Еженедельные)</div>
+                    <div class="feature-desc">Новые задачи каждый день. Выполни челленджи и получи щедрые награды!</div>
+                </div>
+
+                <div class="feature-card phase-card">
+                    <div class="feature-icon">🏆</div>
+                    <div class="feature-title">ФАЗА 3: Расширенные Лидерборды</div>
+                    <div class="feature-desc">Глобальные рейтинги, рейтинги друзей и рейтинги по режимам. Стань лучшим!</div>
+                </div>
+
+                <div class="feature-card phase-card">
+                    <div class="feature-icon">🎨</div>
+                    <div class="feature-title">ФАЗА 4: Система Косметики</div>
+                    <div class="feature-desc">Оформи свои карточки! Скины, анимации, темы. Покажи свой стиль!</div>
+                </div>
+
+                <div class="feature-card phase-card">
+                    <div class="feature-icon">🗂️</div>
+                    <div class="feature-title">ФАЗА 5: Кастомные Наборы Карточек</div>
+                    <div class="feature-desc">Животные, еда, природа, спорт, флаги, мифология и еще 20+ наборов!</div>
+                </div>
+
+                <div class="feature-card phase-card">
+                    <div class="feature-icon">⏱️</div>
+                    <div class="feature-title">ФАЗА 6: Сложные Режимы</div>
+                    <div class="feature-desc">Классик, Блиц (60 сек), На время (2 мин), Выживание (3 жизни), Гонка (PvE)</div>
+                </div>
+
+                <div class="feature-card phase-card">
+                    <div class="feature-icon">⚔️</div>
+                    <div class="feature-title">ФАЗА 7: PvP Арена</div>
+                    <div class="feature-desc">Турниры, рейтинговые баттлы, дуэли с друзьями. Докажи что ты лучший!</div>
+                </div>
+
+                <div class="feature-card phase-card">
+                    <div class="feature-icon">👥</div>
+                    <div class="feature-title">ФАЗА 8: Социал и Квесты</div>
+                    <div class="feature-desc">Друзья, совместные квесты, чат, вызовы. Играй со своей командой!</div>
+                </div>
+            </div>
+
+            <div class="landing-features">
+                <div>📱 Игра адаптирована для мобильных устройств</div>
+                <div>🌙 Поддерживает темный режим</div>
+                <div>🌐 Кроссбраузерная совместимость</div>
+                <div>🚀 8 фаз расширения с 2,600+ строк кода!</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
     <!-- ЭКРАН АУТЕНТИФИКАЦИИ -->
     <!-- ============================================ -->
-    <div id="authScreen" class="screen active">
+    <div id="authScreen" class="screen">
         <div class="auth-container">
             <h1>🎮 Найди пару</h1>
             <p style="text-align: center; color: #666; margin-bottom: 30px;">Игра памяти для детей 7+</p>
@@ -43,59 +159,15 @@
                     <button type="submit" class="btn-primary">✍️ Зарегистрироваться</button>
                 </form>
             </div>
-        </div>
-    </div>
 
-    <!-- ============================================ -->
-    <!-- АДМИН ПАНЕЛЬ -->
-    <!-- ============================================ -->
-    <div id="adminScreen" class="screen">
-        <div class="admin-container">
-            <div class="admin-header">
-                <h1>⚙️ Админ Панель</h1>
-                <div style="display: flex; gap: 10px;">
-                    <button onclick="showMainMenu()" class="btn-secondary">🎮 К игре</button>
-                    <button onclick="logoutUser()" class="btn-secondary">🚪 Выход</button>
-                </div>
-            </div>
-
-            <div class="admin-grid">
-                <!-- Статистика -->
-                <div class="admin-card">
-                    <h2>📊 Статистика</h2>
-                    <div id="statsContent">
-                        <p>Загрузка...</p>
-                    </div>
-                </div>
-
-                <!-- Пользователи -->
-                <div class="admin-card">
-                    <h2>👥 Пользователи</h2>
-                    <div id="usersContent">
-                        <p id="userCount">Загрузка...</p>
-                    </div>
-                </div>
-
-                <!-- Система -->
-                <div class="admin-card">
-                    <h2>⚙️ Система</h2>
-                    <button onclick="clearAllData()" class="btn-danger">🗑️ Очистить данные</button>
-                    <button onclick="downloadBackup()" class="btn-secondary" style="margin-top: 10px;">💾 Скачать резервную копию</button>
-                </div>
-
-                <!-- Лидерборд -->
-                <div class="admin-card">
-                    <h2>🏆 Лидерборд (топ-10)</h2>
-                    <div id="leaderboardContent">
-                        <p>Загрузка...</p>
-                    </div>
-                </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <button onclick="showScreen('landingScreen')" class="btn-secondary">⬅️ Назад</button>
             </div>
         </div>
     </div>
 
     <!-- ============================================ -->
-    <!-- ГЛАВНОЕ МЕНЮ -->
+    <!-- ГЛАВНОЕ МЕНЮ ИГРЫ -->
     <!-- ============================================ -->
     <div id="mainMenuScreen" class="screen">
         <div class="main-menu-container">
@@ -172,6 +244,54 @@
             <div class="main-menu-footer">
                 <button class="btn-secondary" onclick="openAdminPanel()">⚙️ Админ</button>
                 <button class="btn-secondary" onclick="logoutUser()">🚪 Выход</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- АДМИН ПАНЕЛЬ -->
+    <!-- ============================================ -->
+    <div id="adminScreen" class="screen">
+        <div class="admin-container">
+            <div class="admin-header">
+                <h1>⚙️ Админ Панель</h1>
+                <div style="display: flex; gap: 10px;">
+                    <button onclick="showMainMenu()" class="btn-secondary">🎮 К игре</button>
+                    <button onclick="logoutUser()" class="btn-secondary">🚪 Выход</button>
+                </div>
+            </div>
+
+            <div class="admin-grid">
+                <!-- Статистика -->
+                <div class="admin-card">
+                    <h2>📊 Статистика</h2>
+                    <div id="statsContent">
+                        <p>Загрузка...</p>
+                    </div>
+                </div>
+
+                <!-- Пользователи -->
+                <div class="admin-card">
+                    <h2>👥 Пользователи</h2>
+                    <div id="usersContent">
+                        <p id="userCount">Загрузка...</p>
+                    </div>
+                </div>
+
+                <!-- Система -->
+                <div class="admin-card">
+                    <h2>⚙️ Система</h2>
+                    <button onclick="clearAllData()" class="btn-danger">🗑️ Очистить данные</button>
+                    <button onclick="downloadBackup()" class="btn-secondary" style="margin-top: 10px;">💾 Скачать резервную копию</button>
+                </div>
+
+                <!-- Лидерборд -->
+                <div class="admin-card">
+                    <h2>🏆 Лидерборд (топ-10)</h2>
+                    <div id="leaderboardContent">
+                        <p>Загрузка...</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
