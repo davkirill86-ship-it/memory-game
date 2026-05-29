@@ -29,6 +29,9 @@
                     <input type="password" placeholder="🔐 Пароль" required>
                     <button type="submit" class="btn-primary">🔓 Вход</button>
                 </form>
+                <div style="text-align: center; margin-top: 15px; font-size: 12px; color: #999;">
+                    💡 Демо: test@demo.com / 123456
+                </div>
             </div>
 
             <!-- Вкладка регистрации -->
@@ -39,6 +42,54 @@
                     <input type="password" placeholder="🔐 Пароль" required>
                     <button type="submit" class="btn-primary">✍️ Зарегистрироваться</button>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- АДМИН ПАНЕЛЬ -->
+    <!-- ============================================ -->
+    <div id="adminScreen" class="screen">
+        <div class="admin-container">
+            <div class="admin-header">
+                <h1>⚙️ Админ Панель</h1>
+                <div style="display: flex; gap: 10px;">
+                    <button onclick="showMainMenu()" class="btn-secondary">🎮 К игре</button>
+                    <button onclick="logoutUser()" class="btn-secondary">🚪 Выход</button>
+                </div>
+            </div>
+
+            <div class="admin-grid">
+                <!-- Статистика -->
+                <div class="admin-card">
+                    <h2>📊 Статистика</h2>
+                    <div id="statsContent">
+                        <p>Загрузка...</p>
+                    </div>
+                </div>
+
+                <!-- Пользователи -->
+                <div class="admin-card">
+                    <h2>👥 Пользователи</h2>
+                    <div id="usersContent">
+                        <p id="userCount">Загрузка...</p>
+                    </div>
+                </div>
+
+                <!-- Система -->
+                <div class="admin-card">
+                    <h2>⚙️ Система</h2>
+                    <button onclick="clearAllData()" class="btn-danger">🗑️ Очистить данные</button>
+                    <button onclick="downloadBackup()" class="btn-secondary" style="margin-top: 10px;">💾 Скачать резервную копию</button>
+                </div>
+
+                <!-- Лидерборд -->
+                <div class="admin-card">
+                    <h2>🏆 Лидерборд (топ-10)</h2>
+                    <div id="leaderboardContent">
+                        <p>Загрузка...</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -119,6 +170,7 @@
             </div>
 
             <div class="main-menu-footer">
+                <button class="btn-secondary" onclick="openAdminPanel()">⚙️ Админ</button>
                 <button class="btn-secondary" onclick="logoutUser()">🚪 Выход</button>
             </div>
         </div>

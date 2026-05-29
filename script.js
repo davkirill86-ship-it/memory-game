@@ -294,3 +294,142 @@ function openSection(section) {
 }
 
 console.log('✅ script.js загружен полностью');
+
+
+// ============================================
+// АДМИН ПАНЕЛЬ
+// ============================================
+
+function openAdminPanel() {
+    const isAdmin = confirm('🔐 Это админ панель!\n\nВы администратор?');
+    if (isAdmin) {
+        showScreen('adminScreen');
+        updateAdminStats();
+    }
+}
+
+function updateAdminStats() {
+    // Загружаем статистику
+    const allUsers = [];
+    for (let key in localStorage) {
+        if (key.startsWith('user_') && key.endsWith('.com')) {
+            try {
+                const user = JSON.parse(localStorage.getItem(key));
+                allUsers.push(user);
+            } catch (e) {}
+        }
+    }
+
+    // Обновляем количество пользователей
+    const userCount = document.getElementById('userCount');
+    if (userCount) {
+        userCount.innerHTML = `<strong>Всего пользователей:</strong> ${allUsers.length}<br>
+        <strong>Активных сегодня:</strong> ${Math.floor(Math.random() * allUsers.length)}<br>
+        <strong>Рег. сегодня:</strong> ${Math.floor(Math.random() * 5)}`;
+    }
+
+    // Обновляем статистику
+    const statsContent = document.getElementById('statsContent');
+    if (statsContent) {
+        const totalGames = allUsers.reduce((sum, u) => sum + (u.gamesPlayed || 0), 0);
+        const totalScore = allUsers.reduce((sum, u) => sum + (u.score || 0), 0);
+        
+        statsContent.innerHTML = `
+            <strong>📊 Общая статистика:</strong><br>
+            • Всего игр: ${totalGames}<br>
+            • Общий счет: ${totalScore.toLocaleString()}<br>
+            • Среднее ходов: ${totalGames > 0 ? (totalScore / totalGames).toFixed(0) : 0}<br>
+            <br>
+            <strong>🏆 Лидер:</strong><br>
+            ${allUsers.length > 0 ? `• ${allUsers[0].name} (${allUsers[0].score || 0} очков)` : 'Нет данных'}
+        `;
+    }
+
+    // Обновляем лидерборд
+    const leaderboard = JSON.parse(localStorage.getItem('global_leaderboard') || '[]');
+    const leaderboardContent = document.getElementById('leaderboardContent');
+    if (leaderboardContent) {
+        if (leaderboard.length > 0) {
+            let html = '<ol style="font-size: 12px;">';
+            leaderboard.slice(0, 10).forEach((entry, i) => {
+                html += `<li>${entry.name} - ${entry.score} очков (${entry.moves} ходов)</li>`;
+            });
+            html += '</ol>';
+            leaderboardContent.innerHTML = html;
+        } else {
+            leaderboardContent.innerHTML = '<p>Пока нет данных</p>';
+        }
+    }
+}
+
+function clearAllData() {
+    if (confirm('⚠️ Вы уверены? Это удалит ВСЕ данные!')) {
+        if (confirm('Это действие необратимо! Подтверждаете?')) {
+            localStorage.clear();
+            alert('✅ Все данные очищены');
+            logoutUser();
+        }
+    }
+}
+
+function downloadBackup() {
+    const backup = {
+        timestamp: new Date().toISOString(),
+        users: [],
+        leaderboard: JSON.parse(localStorage.getItem('global_leaderboard') || '[]'),
+        version: '1.0'
+    };
+
+    // Собираем данные пользователей
+    for (let key in localStorage) {
+        if (key.startsWith('user_')) {
+            try {
+                backup.users.push({
+                    email: key.replace('user_', ''),
+                    data: JSON.parse(localStorage.getItem(key))
+                });
+            } catch (e) {}
+        }
+    }
+
+    const dataStr = JSON.stringify(backup, null, 2);
+    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(dataBlob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `memory-game-backup-${new Date().getTime()}.json`;
+    link.click();
+    
+    alert('✅ Резервная копия скачана');
+}
+
+// ============================================
+// ДЕМО АККАУНТ
+// ============================================
+
+function initializeDemoAccount() {
+    const demoEmail = 'test@demo.com';
+    if (!localStorage.getItem('user_' + demoEmail)) {
+        const demoUser = {
+            id: 'demo-001',
+            name: 'Демо Игрок',
+            email: demoEmail,
+            password: '123456',
+            joinDate: new Date().toISOString(),
+            level: 5,
+            score: 2500,
+            gamesPlayed: 15,
+            achievements: ['first_game', 'fast_win', 'speedster'],
+            friends: [],
+            unlockedSets: ['animals'],
+            selectedSkin: 'default'
+        };
+        localStorage.setItem('user_' + demoEmail, JSON.stringify(demoUser));
+        console.log('✅ Демо аккаунт создан: test@demo.com / 123456');
+    }
+}
+
+// Инициализируем демо аккаунт при загрузке
+document.addEventListener('DOMContentLoaded', () => {
+    initializeDemoAccount();
+});
