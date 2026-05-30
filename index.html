@@ -453,17 +453,17 @@
                 <div class="cosmetic-item">
                     <div class="cosmetic-preview" style="background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%);"></div>
                     <div class="cosmetic-name">Фиолетовый</div>
-                    <div class="cosmetic-status">Заблокирован</div>
+                    <button class="btn-primary" onclick="selectCosmetic(this.parentElement.querySelector(\'.cosmetic-name\').textContent)" style="width: 100%; margin-top: 8px;">Разблокировать</button>
                 </div>
                 <div class="cosmetic-item">
                     <div class="cosmetic-preview" style="background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);"></div>
                     <div class="cosmetic-name">Синий</div>
-                    <div class="cosmetic-status">Заблокирован</div>
+                    <button class="btn-primary" onclick="selectCosmetic(this.parentElement.querySelector(\'.cosmetic-name\').textContent)" style="width: 100%; margin-top: 8px;">Разблокировать</button>
                 </div>
                 <div class="cosmetic-item">
                     <div class="cosmetic-preview" style="background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);"></div>
                     <div class="cosmetic-name">Золотой</div>
-                    <div class="cosmetic-status">Заблокирован</div>
+                    <button class="btn-primary" onclick="selectCosmetic(this.parentElement.querySelector(\'.cosmetic-name\').textContent)" style="width: 100%; margin-top: 8px;">Разблокировать</button>
                 </div>
             </div>
         </div>
@@ -489,19 +489,19 @@
                     <div class="cardset-icon">🍕</div>
                     <div class="cardset-name">Еда</div>
                     <div class="cardset-count">8 карт</div>
-                    <div class="cardset-status">🔒 Заблокирован</div>
+                    <button class="btn-primary" onclick="selectCardSet(this.parentElement.querySelector(\'.cardset-name\').textContent)" style="width: 100%; margin-top: 8px;">Разблокировать</button>
                 </div>
                 <div class="cardset-item locked">
                     <div class="cardset-icon">🌲</div>
                     <div class="cardset-name">Природа</div>
                     <div class="cardset-count">8 карт</div>
-                    <div class="cardset-status">🔒 Заблокирован</div>
+                    <button class="btn-primary" onclick="selectCardSet(this.parentElement.querySelector(\'.cardset-name\').textContent)" style="width: 100%; margin-top: 8px;">Разблокировать</button>
                 </div>
                 <div class="cardset-item locked">
                     <div class="cardset-icon">⚽</div>
                     <div class="cardset-name">Спорт</div>
                     <div class="cardset-count">8 карт</div>
-                    <div class="cardset-status">🔒 Заблокирован</div>
+                    <button class="btn-primary" onclick="selectCardSet(this.parentElement.querySelector(\'.cardset-name\').textContent)" style="width: 100%; margin-top: 8px;">Разблокировать</button>
                 </div>
             </div>
         </div>
@@ -523,7 +523,7 @@
                         <div class="mode-title">Классический</div>
                         <div class="mode-desc">Найди все пары без ограничений по времени</div>
                     </div>
-                    <button class="btn-primary">Играть</button>
+                    <button class="btn-primary" onclick="playMode('Классический')">Играть</button>
                 </div>
                 <div class="mode-item">
                     <div class="mode-icon">⏱️</div>
@@ -531,7 +531,7 @@
                         <div class="mode-title">На время</div>
                         <div class="mode-desc">Выигри за 2 минуты</div>
                     </div>
-                    <button class="btn-primary">Играть</button>
+                    <button class="btn-primary" onclick="playMode('Классический')">Играть</button>
                 </div>
                 <div class="mode-item">
                     <div class="mode-icon">💔</div>
@@ -539,7 +539,7 @@
                         <div class="mode-title">Выживание</div>
                         <div class="mode-desc">У тебя есть 3 ошибки</div>
                     </div>
-                    <button class="btn-primary">Играть</button>
+                    <button class="btn-primary" onclick="playMode('Классический')">Играть</button>
                 </div>
                 <div class="mode-item">
                     <div class="mode-icon">⚡</div>
@@ -547,7 +547,7 @@
                         <div class="mode-title">Блиц</div>
                         <div class="mode-desc">Найди пары за 60 секунд</div>
                     </div>
-                    <button class="btn-primary">Играть</button>
+                    <button class="btn-primary" onclick="playMode('Классический')">Играть</button>
                 </div>
             </div>
         </div>
@@ -570,7 +570,7 @@
                         <div class="tournament-desc">Участвуй и выигрывай до 1000 очков</div>
                         <div class="tournament-status">🔴 Активен</div>
                     </div>
-                    <button class="btn-primary">Присоединиться</button>
+                    <button class="btn-primary" onclick="joinTournament(\'Еженедельный турнир\')">Присоединиться</button>
                 </div>
                 <div class="tournament-item">
                     <div class="tournament-icon">👑</div>
@@ -579,7 +579,7 @@
                         <div class="tournament-desc">Большой турнир с призом 5000 очков</div>
                         <div class="tournament-status">🔴 Активен</div>
                     </div>
-                    <button class="btn-primary">Присоединиться</button>
+                    <button class="btn-primary" onclick="joinTournament(\'Ежемесячный турнир\')">Присоединиться</button>
                 </div>
                 <div class="tournament-item">
                     <div class="tournament-icon">⭐</div>
@@ -588,7 +588,7 @@
                         <div class="tournament-desc">Вызови своего друга на 1v1 баттл</div>
                         <div class="tournament-status">🔵 Доступно</div>
                     </div>
-                    <button class="btn-primary">Вызвать</button>
+                    <button class="btn-primary" onclick="challengeFriend()">Вызвать</button>
                 </div>
             </div>
         </div>
@@ -607,7 +607,7 @@
                 <div class="social-section">
                     <h3>👫 Друзья</h3>
                     <p style="color: #999;">У тебя пока нет друзей. Пригласи их через код: <strong>DEMO2024</strong></p>
-                    <button class="btn-primary" style="width: 100%; margin-top: 10px;">➕ Пригласить друга</button>
+                    <button class="btn-primary" onclick="addFriend()" style="width: 100%; margin-top: 10px;">➕ Пригласить друга</button>
                 </div>
                 <div class="social-section">
                     <h3>📝 Совместные квесты</h3>
