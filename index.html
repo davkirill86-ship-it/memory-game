@@ -685,13 +685,13 @@
     <!-- ============================================ -->
     <!-- МОДАЛЬНОЕ ОКНО ЗАВЕРШЕНИЯ ИГРЫ -->
     <!-- ============================================ -->
-    <div id="gameEndModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <div class="modal-header" id="modalTitle">🎉 Игра завершена!</div>
-            <div class="modal-body" id="modalMessage">
+    <div id="gameEndModalOverlay" class="game-end-modal-overlay" style="display: none;">
+        <div class="game-end-modal-content">
+            <div class="game-end-modal-header" id="modalTitle">🎉 Игра завершена!</div>
+            <div class="game-end-modal-body" id="modalMessage">
                 ✅ Найдено пар: 0/6
             </div>
-            <div class="modal-footer">
+            <div class="game-end-modal-footer">
                 <button class="btn-primary" onclick="closeGameEndModal(); showMainMenu();">↩️ В главное меню</button>
             </div>
         </div>

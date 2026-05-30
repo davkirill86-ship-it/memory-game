@@ -704,19 +704,19 @@ function endTimedGame(mode) {
 }
 
 function showGameEndModal(title, message) {
-    const modal = document.getElementById('gameEndModal');
+    const modal = document.getElementById('gameEndModalOverlay');
     const modalTitle = document.getElementById('modalTitle');
     const modalMessage = document.getElementById('modalMessage');
 
     if (modal && modalTitle && modalMessage) {
         modalTitle.textContent = title;
         modalMessage.textContent = message;
-        modal.style.display = 'flex';
+        modal.style.display = 'block';
     }
 }
 
 function closeGameEndModal() {
-    const modal = document.getElementById('gameEndModal');
+    const modal = document.getElementById('gameEndModalOverlay');
     if (modal) {
         modal.style.display = 'none';
     }
