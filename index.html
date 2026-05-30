@@ -688,11 +688,14 @@
     <div id="findOpponentModal" class="opponent-modal-overlay" style="display: none;">
         <div class="opponent-modal-content">
             <div class="opponent-modal-header">🔍 Поиск противников</div>
+            <div id="opponentTimer" style="text-align: center; font-size: 18px; font-weight: bold; color: #667eea; margin-bottom: 15px; display: none;">
+                ⏱️ <span id="timerDisplay">30</span> сек
+            </div>
             <div class="opponent-modal-body">
                 <div id="opponentsList" class="opponents-list"></div>
             </div>
             <div class="opponent-modal-footer">
-                <button class="btn-secondary" onclick="closeFindOpponentModal();">❌ Отмена</button>
+                <button class="btn-secondary" onclick="closeFindOpponentModal(); showMainMenu();">❌ Отмена</button>
             </div>
         </div>
     </div>

@@ -216,6 +216,8 @@ function startDuel() {
 
 // Таймер поиска противников
 let opponentSearchTimer = null;
+let opponentTimerInterval = null;
+let opponentTimeRemaining = 30;
 
 function showFindOpponentModal() {
     // Генерируем список доступных противников (AI)
@@ -229,8 +231,9 @@ function showFindOpponentModal() {
 
     const modal = document.getElementById('findOpponentModal');
     const list = document.getElementById('opponentsList');
+    const timerDisplay = document.getElementById('opponentTimer');
 
-    if (!modal || !list) return;
+    if (!modal || !list || !timerDisplay) return;
 
     // Очищаем список
     list.innerHTML = '';
@@ -249,47 +252,71 @@ function showFindOpponentModal() {
         list.innerHTML += itemHTML;
     });
 
-    // Показываем модальное окно
+    // Показываем модальное окно и таймер
     modal.style.display = 'flex';
+    timerDisplay.style.display = 'block';
+    opponentTimeRemaining = 30;
 
-    // Устанавливаем таймер на 30 секунд
-    if (opponentSearchTimer) clearTimeout(opponentSearchTimer);
+    // Обновляем таймер каждую секунду
+    if (opponentTimerInterval) clearInterval(opponentTimerInterval);
 
-    opponentSearchTimer = setTimeout(() => {
-        // Если не выбран противник за 30 секунд, показываем сообщение
-        const modal = document.getElementById('findOpponentModal');
-        const list = document.getElementById('opponentsList');
+    opponentTimerInterval = setInterval(() => {
+        opponentTimeRemaining--;
+        document.getElementById('timerDisplay').textContent = opponentTimeRemaining;
 
-        if (modal && list && modal.style.display === 'flex') {
-            list.innerHTML = `
-                <div style="text-align: center; padding: 40px 20px;">
-                    <div style="font-size: 24px; margin-bottom: 10px;">❌ Игроков не найдено</div>
-                    <div style="font-size: 14px; color: #666; margin-bottom: 20px;">Попробуйте позже</div>
-                    <button class="btn-secondary" onclick="closeFindOpponentModal();">Вернуться</button>
-                </div>
-            `;
+        // Если время истекло
+        if (opponentTimeRemaining <= 0) {
+            clearInterval(opponentTimerInterval);
+            const list = document.getElementById('opponentsList');
+            if (list) {
+                list.innerHTML = `
+                    <div style="text-align: center; padding: 40px 20px;">
+                        <div style="font-size: 24px; margin-bottom: 10px;">❌ Игроков не найдено</div>
+                        <div style="font-size: 14px; color: #666; margin-bottom: 20px;">Попробуйте позже</div>
+                        <button class="btn-secondary" onclick="closeFindOpponentModal(); showMainMenu();">Вернуться</button>
+                    </div>
+                `;
+            }
         }
+    }, 1000);
+
+    // Таймер на 30 секунд для очистки (на случай если пользователь не закроет окно)
+    if (opponentSearchTimer) clearTimeout(opponentSearchTimer);
+    opponentSearchTimer = setTimeout(() => {
+        // Интервал уже сделал свою работу
     }, 30000);
 }
 
 function closeFindOpponentModal() {
-    // Очищаем таймер
+    // Очищаем таймеры
     if (opponentSearchTimer) {
         clearTimeout(opponentSearchTimer);
         opponentSearchTimer = null;
     }
+    if (opponentTimerInterval) {
+        clearInterval(opponentTimerInterval);
+        opponentTimerInterval = null;
+    }
 
     const modal = document.getElementById('findOpponentModal');
+    const timerDisplay = document.getElementById('opponentTimer');
     if (modal) {
         modal.style.display = 'none';
+    }
+    if (timerDisplay) {
+        timerDisplay.style.display = 'none';
     }
 }
 
 function acceptDuel(opponentName, opponentRating, opponentSkill) {
-    // Очищаем таймер
+    // Очищаем таймеры
     if (opponentSearchTimer) {
         clearTimeout(opponentSearchTimer);
         opponentSearchTimer = null;
+    }
+    if (opponentTimerInterval) {
+        clearInterval(opponentTimerInterval);
+        opponentTimerInterval = null;
     }
 
     // Закрываем модальное окно
