@@ -430,8 +430,16 @@ function flipDuelCard(index, cardElement) {
                 }
             } else {
                 // Карточки не совпадают - закрываем их
-                console.log('🔴 Начинаю закрывать карточки:', card1, card2);
+                console.log('🔴 Начинаю закрывать карточки:', i1, i2, card1, card2);
+                console.log('🔴 card1 null?', card1 === null, 'card2 null?', card2 === null);
+
+                if (!card1 || !card2) {
+                    console.error('🔴 ОШИБКА! Карточки не найдены!', card1, card2);
+                    return;
+                }
+
                 // Переопределяем стили ПЕРЕД удалением класса
+                console.log('🔴 Устанавливаю стили...');
                 card1.style.cssText = 'background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%) !important; color: white !important; font-size: 32px !important;';
                 card2.style.cssText = 'background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%) !important; color: white !important; font-size: 32px !important;';
                 console.log('🔴 Стили установлены:', card1.style.cssText);
