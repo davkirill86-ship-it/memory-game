@@ -416,10 +416,13 @@ function flipDuelCard(index, cardElement) {
                     setTimeout(() => simulateOpponentMove(), 500);
                 }
             } else {
+                // Карточки не совпадают - закрываем их
                 card1.textContent = '?';
                 card2.textContent = '?';
                 card1.classList.remove('flipped');
                 card2.classList.remove('flipped');
+                card1.style.color = 'white';
+                card2.style.color = 'white';
                 gameState.flipped = [];
 
                 setTimeout(() => simulateOpponentMove(), 500);
