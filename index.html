@@ -133,6 +133,127 @@
             <h1>🎮 Найди пару</h1>
             <p style="text-align: center; color: #666; margin-bottom: 30px;">Игра памяти для детей 7+</p>
 
+            <div class="features-showcase" style="margin-bottom: 25px;">
+                <div class="feature-row">
+                    <div class="feature-item">
+                        <div class="feature-emoji">🎮</div>
+                        <div class="feature-text">
+                            <strong>7 уровней</strong>
+                            <span>От 4 до 20 пар</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-emoji">⚡</div>
+                        <div class="feature-text">
+                            <strong>Комбо система</strong>
+                            <span>×2, ×3, ×4 множители</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-emoji">🎁</div>
+                        <div class="feature-text">
+                            <strong>50+ достижений</strong>
+                            <span>Получай награды</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-row">
+                    <div class="feature-item">
+                        <div class="feature-emoji">⚔️</div>
+                        <div class="feature-text">
+                            <strong>Дуэль режим</strong>
+                            <span>Играй против AI</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-emoji">🏆</div>
+                        <div class="feature-text">
+                            <strong>Лидерборды</strong>
+                            <span>Соревнуйся с другими</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-emoji">🎨</div>
+                        <div class="feature-text">
+                            <strong>Косметика</strong>
+                            <span>Кастомизируй карточки</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <style>
+                .features-showcase {
+                    background: linear-gradient(135deg, #f0f4ff 0%, #f8f5ff 100%);
+                    border-radius: 12px;
+                    padding: 20px;
+                    border: 1px solid #ddd;
+                }
+                
+                .feature-row {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 12px;
+                    margin-bottom: 12px;
+                }
+                
+                .feature-row:last-child {
+                    margin-bottom: 0;
+                }
+                
+                .feature-item {
+                    text-align: center;
+                    padding: 12px;
+                    background: white;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                    transition: all 0.3s ease;
+                }
+                
+                .feature-item:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                }
+                
+                .feature-emoji {
+                    font-size: 32px;
+                    margin-bottom: 8px;
+                }
+                
+                .feature-text strong {
+                    display: block;
+                    font-size: 13px;
+                    color: #333;
+                    margin-bottom: 4px;
+                    font-weight: 600;
+                }
+                
+                .feature-text span {
+                    display: block;
+                    font-size: 11px;
+                    color: #999;
+                }
+                
+                @media (max-width: 600px) {
+                    .feature-row {
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 10px;
+                    }
+                    
+                    .feature-emoji {
+                        font-size: 28px;
+                    }
+                    
+                    .feature-text strong {
+                        font-size: 12px;
+                    }
+                    
+                    .feature-text span {
+                        font-size: 10px;
+                    }
+                }
+            </style>
+
             <div class="auth-tabs">
                 <button class="tab-btn active" data-tab="login">Вход</button>
                 <button class="tab-btn" data-tab="register">Регистрация</button>
