@@ -716,10 +716,13 @@ function showGameEndModal(title, message) {
 }
 
 function closeGameEndModal() {
+    console.log('closeGameEndModal вызвана');
     const modal = document.getElementById('gameEndModalOverlay');
     if (modal) {
+        console.log('Скрываем модальное окно');
         modal.style.display = 'none';
     }
+    console.log('Переходим в главное меню');
     showMainMenu();
 }
 
