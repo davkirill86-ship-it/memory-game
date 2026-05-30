@@ -385,8 +385,6 @@ function setupDuelBoard() {
 }
 
 function flipDuelCard(index, cardElement) {
-    console.log('📍 flipDuelCard вызвана:', index, gameState.flipped);
-
     if (gameState.flipped.length >= 2) return;
     if (gameState.flipped.includes(index)) return;
     if (cardElement.classList.contains('matched')) return;
@@ -401,10 +399,8 @@ function flipDuelCard(index, cardElement) {
 
         setTimeout(() => {
             const [i1, i2] = gameState.flipped;
-            console.log('🔍 Поиск карточек:', i1, i2);
             const card1 = document.querySelector(`[data-index="${i1}"]`);
             const card2 = document.querySelector(`[data-index="${i2}"]`);
-            console.log('📌 Найдены карточки:', !!card1, !!card2, card1, card2);
 
             if (gameState.cards[i1] === gameState.cards[i2]) {
                 card1.classList.add('matched');
@@ -422,8 +418,6 @@ function flipDuelCard(index, cardElement) {
                 }
             } else {
                 // Карточки не совпадают - закрываем их
-                console.log('❌ Карточки не совпадают, закрываем:', card1.textContent, card2.textContent);
-
                 // Переопределяем стили ПЕРЕД удалением класса
                 card1.style.cssText = 'background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%) !important; color: white !important; font-size: 32px !important;';
                 card2.style.cssText = 'background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%) !important; color: white !important; font-size: 32px !important;';
@@ -438,8 +432,6 @@ function flipDuelCard(index, cardElement) {
 
                 gameState.flipped = [];
                 updateDuelUI();
-
-                console.log('✅ Карточки закрыты, состояние обновлено');
 
                 setTimeout(() => simulateOpponentMove(), 1000);
             }
