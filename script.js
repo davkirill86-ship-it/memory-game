@@ -493,3 +493,192 @@ function sendMessage() {
 }
 
 console.log('✅ Обработчики кнопок добавлены');
+
+// ============================================
+// РЕЖИМЫ ИГРЫ С ЛОГИКОЙ
+// ============================================
+
+let currentGameMode = 'classic';
+let gameTimer = null;
+let remainingTime = 0;
+let lives = 3;
+
+function playMode(modeName) {
+    // Определяем режим
+    const modeMap = {
+        'Классический': 'classic',
+        'На время': 'timed',
+        'Выживание': 'survival',
+        'Блиц': 'blitz'
+    };
+
+    currentGameMode = modeMap[modeName];
+    
+    // Показываем экран игры
+    showScreen('gameScreen');
+    
+    // Инициализируем режим
+    if (currentGameMode === 'classic') {
+        initClassicMode();
+    } else if (currentGameMode === 'timed') {
+        initTimedMode();
+    } else if (currentGameMode === 'survival') {
+        initSurvivalMode();
+    } else if (currentGameMode === 'blitz') {
+        initBlitzMode();
+    }
+    
+    // Создаем доску
+    setupGameBoard();
+}
+
+function initClassicMode() {
+    // Классический режим - без ограничений
+    document.querySelector('.game-container h1').textContent = '🎮 Классический режим';
+    
+    const infoDiv = document.querySelector('.game-info');
+    infoDiv.innerHTML = `
+        <div class="info-item">
+            <div style="font-size: 12px; color: #999;">Найдено</div>
+            <div style="font-size: 24px; font-weight: bold; color: #667eea;">
+                <span id="foundCount">0</span>/6
+            </div>
+        </div>
+        <div class="info-item">
+            <div style="font-size: 12px; color: #999;">Ходов</div>
+            <div style="font-size: 24px; font-weight: bold; color: #764ba2;">
+                <span id="moveCount">0</span>
+            </div>
+        </div>
+    `;
+    
+    resetGame();
+}
+
+function initTimedMode() {
+    // Режим на время - 2 минуты
+    document.querySelector('.game-container h1').textContent = '⏱️ Режим На Время (2 мин)';
+    remainingTime = 120;
+    
+    const infoDiv = document.querySelector('.game-info');
+    infoDiv.innerHTML = `
+        <div class="info-item">
+            <div style="font-size: 12px; color: #999;">Найдено</div>
+            <div style="font-size: 24px; font-weight: bold; color: #667eea;">
+                <span id="foundCount">0</span>/6
+            </div>
+        </div>
+        <div class="info-item">
+            <div style="font-size: 12px; color: #999;">Время</div>
+            <div style="font-size: 24px; font-weight: bold; color: #ff6b6b;">
+                <span id="timerDisplay">2:00</span>
+            </div>
+        </div>
+    `;
+    
+    resetGame();
+    startTimer();
+}
+
+function initSurvivalMode() {
+    // Выживание - 3 ошибки
+    document.querySelector('.game-container h1').textContent = '💔 Режим Выживание (3 ошибки)';
+    lives = 3;
+    
+    const infoDiv = document.querySelector('.game-info');
+    infoDiv.innerHTML = `
+        <div class="info-item">
+            <div style="font-size: 12px; color: #999;">Найдено</div>
+            <div style="font-size: 24px; font-weight: bold; color: #667eea;">
+                <span id="foundCount">0</span>/6
+            </div>
+        </div>
+        <div class="info-item">
+            <div style="font-size: 12px; color: #999;">Жизни</div>
+            <div style="font-size: 24px; font-weight: bold; color: #ff6b6b;">
+                ❤️ <span id="livesCount">3</span>
+            </div>
+        </div>
+    `;
+    
+    resetGame();
+}
+
+function initBlitzMode() {
+    // Блиц - 60 секунд
+    document.querySelector('.game-container h1').textContent = '⚡ Режим Блиц (60 сек)';
+    remainingTime = 60;
+    
+    const infoDiv = document.querySelector('.game-info');
+    infoDiv.innerHTML = `
+        <div class="info-item">
+            <div style="font-size: 12px; color: #999;">Найдено</div>
+            <div style="font-size: 24px; font-weight: bold; color: #667eea;">
+                <span id="foundCount">0</span>/6
+            </div>
+        </div>
+        <div class="info-item">
+            <div style="font-size: 12px; color: #999;">Время</div>
+            <div style="font-size: 24px; font-weight: bold; color: #ff6b6b;">
+                <span id="timerDisplay">1:00</span>
+            </div>
+        </div>
+    `;
+    
+    resetGame();
+    startTimer();
+}
+
+function startTimer() {
+    if (gameTimer) clearInterval(gameTimer);
+    
+    gameTimer = setInterval(() => {
+        remainingTime--;
+        
+        const minutes = Math.floor(remainingTime / 60);
+        const seconds = remainingTime % 60;
+        const timerDisplay = document.getElementById('timerDisplay');
+        
+        if (timerDisplay) {
+            timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        }
+        
+        if (remainingTime <= 0) {
+            clearInterval(gameTimer);
+            endTimedGame();
+        }
+    }, 1000);
+}
+
+function endTimedGame() {
+    alert(`⏰ Время вышло!\n\nНайдено пар: ${gameState.matched}/6\nВремя истекло!`);
+    showMainMenu();
+}
+
+function checkSurvivalMode() {
+    if (currentGameMode === 'survival') {
+        const wrongMoves = gameState.moves - (gameState.matched * 2);
+        if (wrongMoves >= lives) {
+            clearInterval(gameTimer);
+            alert(`💔 Жизни закончились!\n\nНайдено пар: ${gameState.matched}/6\nОшибок: ${wrongMoves}`);
+            showMainMenu();
+            return true;
+        }
+        
+        const livesDisplay = document.getElementById('livesCount');
+        if (livesDisplay) {
+            const remainingLives = lives - wrongMoves;
+            livesDisplay.textContent = Math.max(0, remainingLives);
+        }
+    }
+    return false;
+}
+
+// Модифицируем flipCard для учета режимов
+const originalFlipCard = flipCard;
+flipCard = function(index, cardElement) {
+    if (checkSurvivalMode()) return;
+    originalFlipCard.call(this, index, cardElement);
+};
+
+console.log('✅ Логика режимов игры добавлена');
