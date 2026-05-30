@@ -204,33 +204,76 @@ function completeTournamentGame() {
 // ДУЭЛИ С ДРУЗЬЯМИ
 // ============================================
 
-function startDuel(friendName = null) {
+function startDuel() {
     if (!currentUser) {
         alert('❌ Необходимо войти в игру');
         return;
     }
 
-    if (!friendName) {
-        friendName = prompt('Введи ник или email своего друга для дуэли:');
-        if (!friendName) return;
+    // Показываем список доступных противников
+    showFindOpponentModal();
+}
+
+function showFindOpponentModal() {
+    // Генерируем список доступных противников (AI)
+    const opponents = [
+        { name: 'Мастер Памяти', rating: 1250, skill: 0.85 },
+        { name: 'Быстрый Ум', rating: 1100, skill: 0.75 },
+        { name: 'Концентрация', rating: 950, skill: 0.65 },
+        { name: 'Логик', rating: 1150, skill: 0.80 },
+        { name: 'Внимание', rating: 900, skill: 0.60 }
+    ];
+
+    const modal = document.getElementById('findOpponentModal');
+    const list = document.getElementById('opponentsList');
+
+    if (!modal || !list) return;
+
+    // Очищаем список
+    list.innerHTML = '';
+
+    // Добавляем противников в список
+    opponents.forEach((opponent, index) => {
+        const itemHTML = `
+            <div class="opponent-item">
+                <div class="opponent-info">
+                    <div class="opponent-name">${index + 1}. ${opponent.name}</div>
+                    <div class="opponent-rating">⭐ Рейтинг: ${opponent.rating}</div>
+                </div>
+                <button class="opponent-accept-btn" onclick="acceptDuel('${opponent.name}', ${opponent.rating}, ${opponent.skill})">Принять</button>
+            </div>
+        `;
+        list.innerHTML += itemHTML;
+    });
+
+    // Показываем модальное окно
+    modal.style.display = 'flex';
+}
+
+function closeFindOpponentModal() {
+    const modal = document.getElementById('findOpponentModal');
+    if (modal) {
+        modal.style.display = 'none';
     }
+}
 
-    // Имитируем поиск противника
-    alert('🔍 Ищем противника...');
+function acceptDuel(opponentName, opponentRating, opponentSkill) {
+    // Закрываем модальное окно
+    closeFindOpponentModal();
 
+    // Генерируем противника
+    matchOpponent = {
+        name: opponentName,
+        rating: opponentRating,
+        skill: opponentSkill
+    };
+
+    matchScore = { player: 0, opponent: 0 };
+
+    // Небольшая задержка для эффекта поиска
     setTimeout(() => {
-        // Генерируем AI противника
-        matchOpponent = {
-            name: friendName || 'Случайный игрок',
-            rating: Math.floor(Math.random() * 500 + 800),
-            skill: Math.random()
-        };
-
-        matchScore = { player: 0, opponent: 0 };
-
-        // Запускаем дуэль
         startDuelGame();
-    }, 1500);
+    }, 500);
 }
 
 function startDuelGame() {

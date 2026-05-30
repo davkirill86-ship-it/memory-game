@@ -683,6 +683,21 @@
     </div>
 
     <!-- ============================================ -->
+    <!-- МОДАЛЬНОЕ ОКНО ПОИСКА ПРОТИВНИКОВ -->
+    <!-- ============================================ -->
+    <div id="findOpponentModal" class="opponent-modal-overlay" style="display: none;">
+        <div class="opponent-modal-content">
+            <div class="opponent-modal-header">🔍 Поиск противников</div>
+            <div class="opponent-modal-body">
+                <div id="opponentsList" class="opponents-list"></div>
+            </div>
+            <div class="opponent-modal-footer">
+                <button class="btn-secondary" onclick="closeFindOpponentModal();">❌ Отмена</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
     <!-- МОДАЛЬНОЕ ОКНО ЗАВЕРШЕНИЯ ИГРЫ -->
     <!-- ============================================ -->
     <div id="gameEndModalOverlay" class="game-end-modal-overlay" style="display: none;">
