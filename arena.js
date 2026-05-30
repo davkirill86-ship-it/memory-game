@@ -385,6 +385,8 @@ function setupDuelBoard() {
 }
 
 function flipDuelCard(index, cardElement) {
+    console.log('📍 flipDuelCard вызвана:', index, gameState.flipped);
+
     if (gameState.flipped.length >= 2) return;
     if (gameState.flipped.includes(index)) return;
     if (cardElement.classList.contains('matched')) return;
@@ -399,8 +401,10 @@ function flipDuelCard(index, cardElement) {
 
         setTimeout(() => {
             const [i1, i2] = gameState.flipped;
+            console.log('🔍 Поиск карточек:', i1, i2);
             const card1 = document.querySelector(`[data-index="${i1}"]`);
             const card2 = document.querySelector(`[data-index="${i2}"]`);
+            console.log('📌 Найдены карточки:', !!card1, !!card2, card1, card2);
 
             if (gameState.cards[i1] === gameState.cards[i2]) {
                 card1.classList.add('matched');
@@ -420,17 +424,17 @@ function flipDuelCard(index, cardElement) {
                 // Карточки не совпадают - закрываем их
                 console.log('❌ Карточки не совпадают, закрываем:', card1.textContent, card2.textContent);
 
-                // Удаляем класс flipped ПЕРВЫМ (что вернёт CSS стили)
-                card1.classList.remove('flipped');
-                card2.classList.remove('flipped');
+                // Переопределяем стили ПЕРЕД удалением класса
+                card1.style.cssText = 'background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%) !important; color: white !important; font-size: 32px !important;';
+                card2.style.cssText = 'background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%) !important; color: white !important; font-size: 32px !important;';
 
-                // Явно закрываем карточки через setAttribute
+                // Устанавливаем текст '?'
                 card1.textContent = '?';
                 card2.textContent = '?';
 
-                // Переопределяем стили с !important используя cssText
-                card1.setAttribute('style', 'background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%) !important; color: white !important; font-size: 32px !important;');
-                card2.setAttribute('style', 'background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%) !important; color: white !important; font-size: 32px !important;');
+                // Теперь удаляем класс flipped
+                card1.classList.remove('flipped');
+                card2.classList.remove('flipped');
 
                 gameState.flipped = [];
                 updateDuelUI();
