@@ -446,3 +446,50 @@ function initializeDemoAccount() {
 document.addEventListener('DOMContentLoaded', () => {
     initializeDemoAccount();
 });
+
+// ============================================
+// ОБРАБОТЧИКИ КНОПОК В РАЗДЕЛАХ
+// ============================================
+
+function joinTournament(tournamentName) {
+    alert(`✅ Ты присоединился к турниру: ${tournamentName}!\n\nУдачи в боях! ⚔️`);
+}
+
+function playMode(modeName) {
+    alert(`🎮 Режим: ${modeName}\n\nОткрытие игры в режиме...`);
+    showScreen('gameScreen');
+    resetGame();
+}
+
+function selectCosmetic(cosmeticName) {
+    alert(`✅ Скин "${cosmeticName}" активирован!\n\nТвои карточки теперь будут выглядеть по-новому!`);
+}
+
+function selectCardSet(setName) {
+    alert(`✅ Набор "${setName}" выбран!\n\nТеперь ты будешь видеть эти карточки в игре!`);
+}
+
+function challengeFriend() {
+    const friendName = prompt('Введи email своего друга:');
+    if (friendName) {
+        alert(`✅ Вызов отправлен ${friendName}!\n\nОжидание ответа...`);
+    }
+}
+
+function addFriend() {
+    const friendEmail = prompt('Введи email друга для добавления:');
+    if (friendEmail) {
+        alert(`✅ Запрос на дружбу отправлен ${friendEmail}!`);
+    }
+}
+
+function sendMessage() {
+    const input = document.querySelector('.social-section input[type="text"]');
+    if (input && input.value.trim()) {
+        const message = input.value.trim();
+        alert(`✅ Сообщение отправлено: "${message}"`);
+        input.value = '';
+    }
+}
+
+console.log('✅ Обработчики кнопок добавлены');
