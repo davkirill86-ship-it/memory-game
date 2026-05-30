@@ -690,15 +690,36 @@ function startTimer(mode) {
 function endTimedGame(mode) {
     clearInterval(gameTimer);
 
+    let title = '';
     let message = '';
     if (mode === 'timed') {
-        message = `⏰ Время вышло!\n\n✅ Найдено пар: ${gameState.matched}/6`;
+        title = '⏰ Время вышло!';
+        message = `✅ Найдено пар: ${gameState.matched}/6`;
     } else if (mode === 'blitz') {
-        message = `⚡ Время вышло!\n\n✅ Найдено пар: ${gameState.matched}/6`;
+        title = '⚡ Время вышло!';
+        message = `✅ Найдено пар: ${gameState.matched}/6`;
     }
 
-    alert(message);
-    showMainMenu();
+    showGameEndModal(title, message);
+}
+
+function showGameEndModal(title, message) {
+    const modal = document.getElementById('gameEndModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalMessage = document.getElementById('modalMessage');
+
+    if (modal && modalTitle && modalMessage) {
+        modalTitle.textContent = title;
+        modalMessage.textContent = message;
+        modal.style.display = 'flex';
+    }
+}
+
+function closeGameEndModal() {
+    const modal = document.getElementById('gameEndModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
 }
 
 console.log('✅ script.js загружен полностью');
