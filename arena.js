@@ -410,9 +410,12 @@ function flipDuelCard(index, cardElement) {
         updateDuelUI();
 
         setTimeout(() => {
+            console.log('⏰ setTimeout сработал! gameState.flipped:', gameState.flipped);
             const [i1, i2] = gameState.flipped;
+            console.log('⏰ После деструкт: i1=', i1, ', i2=', i2);
             const card1 = document.querySelector(`[data-index="${i1}"]`);
             const card2 = document.querySelector(`[data-index="${i2}"]`);
+            console.log('⏰ card1 найдена:', !!card1, ', card2 найдена:', !!card2);
 
             if (gameState.cards[i1] === gameState.cards[i2]) {
                 card1.classList.add('matched');
