@@ -433,7 +433,7 @@ function flipDuelCard(index, cardElement) {
                 }
             } else {
                 // Карточки не совпадают - закрываем их
-                console.log('🔴 Начинаю закрывать карточки:', i1, i2); console.log('🔴 card1 найдена:', !!card1, 'card2 найдена:', !!card2);;
+                console.log('🔴 Начинаю закрывать карточки:', i1, i2);
                 console.log('🔴 card1 найдена:', !!card1, 'card2 найдена:', !!card2);
 
                 if (!card1 || !card2) {
