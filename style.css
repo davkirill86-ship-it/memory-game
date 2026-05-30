@@ -802,6 +802,7 @@ body {
     display: flex !important;
     justify-content: center;
     align-items: center;
+    pointer-events: auto !important;
 }
 
 .game-end-modal-content {
@@ -814,6 +815,7 @@ body {
     box-shadow: 0 10px 50px rgba(0, 0, 0, 0.4);
     animation: slideUp 0.3s ease-out;
     text-align: center;
+    pointer-events: auto !important;
 }
 
 .game-end-modal-header {
@@ -844,6 +846,7 @@ body {
     cursor: pointer;
     font-weight: bold;
     transition: all 0.3s ease;
+    pointer-events: auto !important;
 }
 
 /* ============================================ */
