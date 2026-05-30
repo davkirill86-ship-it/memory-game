@@ -798,11 +798,11 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
-    z-index: 10000 !important;
-    display: flex !important;
+    z-index: 10000;
+    display: flex;
     justify-content: center;
     align-items: center;
-    pointer-events: auto !important;
+    pointer-events: auto;
 }
 
 .game-end-modal-content {

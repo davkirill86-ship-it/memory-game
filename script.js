@@ -718,7 +718,7 @@ function showGameEndModal(title, message) {
 function closeGameEndModal() {
     const modal = document.getElementById('gameEndModalOverlay');
     if (modal) {
-        modal.style.display = 'none';
+        modal.style.setProperty('display', 'none', 'important');
     }
     showMainMenu();
 }
