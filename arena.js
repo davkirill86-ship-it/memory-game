@@ -214,6 +214,9 @@ function startDuel() {
     showFindOpponentModal();
 }
 
+// Таймер поиска противников
+let opponentSearchTimer = null;
+
 function showFindOpponentModal() {
     // Генерируем список доступных противников (AI)
     const opponents = [
@@ -248,9 +251,34 @@ function showFindOpponentModal() {
 
     // Показываем модальное окно
     modal.style.display = 'flex';
+
+    // Устанавливаем таймер на 30 секунд
+    if (opponentSearchTimer) clearTimeout(opponentSearchTimer);
+
+    opponentSearchTimer = setTimeout(() => {
+        // Если не выбран противник за 30 секунд, показываем сообщение
+        const modal = document.getElementById('findOpponentModal');
+        const list = document.getElementById('opponentsList');
+
+        if (modal && list && modal.style.display === 'flex') {
+            list.innerHTML = `
+                <div style="text-align: center; padding: 40px 20px;">
+                    <div style="font-size: 24px; margin-bottom: 10px;">❌ Игроков не найдено</div>
+                    <div style="font-size: 14px; color: #666; margin-bottom: 20px;">Попробуйте позже</div>
+                    <button class="btn-secondary" onclick="closeFindOpponentModal();">Вернуться</button>
+                </div>
+            `;
+        }
+    }, 30000);
 }
 
 function closeFindOpponentModal() {
+    // Очищаем таймер
+    if (opponentSearchTimer) {
+        clearTimeout(opponentSearchTimer);
+        opponentSearchTimer = null;
+    }
+
     const modal = document.getElementById('findOpponentModal');
     if (modal) {
         modal.style.display = 'none';
@@ -258,6 +286,12 @@ function closeFindOpponentModal() {
 }
 
 function acceptDuel(opponentName, opponentRating, opponentSkill) {
+    // Очищаем таймер
+    if (opponentSearchTimer) {
+        clearTimeout(opponentSearchTimer);
+        opponentSearchTimer = null;
+    }
+
     // Закрываем модальное окно
     closeFindOpponentModal();
 
