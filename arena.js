@@ -418,9 +418,11 @@ function flipDuelCard(index, cardElement) {
                 }
             } else {
                 // Карточки не совпадают - закрываем их
+                console.log('🔴 Начинаю закрывать карточки:', card1, card2);
                 // Переопределяем стили ПЕРЕД удалением класса
                 card1.style.cssText = 'background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%) !important; color: white !important; font-size: 32px !important;';
                 card2.style.cssText = 'background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%) !important; color: white !important; font-size: 32px !important;';
+                console.log('🔴 Стили установлены:', card1.style.cssText);
 
                 // Устанавливаем текст '?'
                 card1.textContent = '?';
