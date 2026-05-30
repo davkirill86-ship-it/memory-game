@@ -733,8 +733,9 @@ body {
     background: white;
     border-radius: 20px;
     padding: 30px;
+    width: 100%;
     max-width: 400px;
-    width: 90%;
+    min-width: 280px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     animation: slideUp 0.3s ease-out;
 }
