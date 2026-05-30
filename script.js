@@ -471,6 +471,9 @@ function challengeFriend() {
     }
 }
 
+// Функция дуэли переместилась в arena.js
+// function startDuel() - вызывается из arena.js
+
 function addFriend() {
     const friendEmail = prompt('Введи email друга для добавления:');
     if (friendEmail) {

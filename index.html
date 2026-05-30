@@ -570,7 +570,7 @@
                         <div class="tournament-desc">Участвуй и выигрывай до 1000 очков</div>
                         <div class="tournament-status">🔴 Активен</div>
                     </div>
-                    <button class="btn-primary" onclick="joinTournament(\'Еженедельный турнир\')">Присоединиться</button>
+                    <button class="btn-primary" onclick="joinTournament('weekly')">Присоединиться</button>
                 </div>
                 <div class="tournament-item">
                     <div class="tournament-icon">👑</div>
@@ -579,7 +579,7 @@
                         <div class="tournament-desc">Большой турнир с призом 5000 очков</div>
                         <div class="tournament-status">🔴 Активен</div>
                     </div>
-                    <button class="btn-primary" onclick="joinTournament(\'Ежемесячный турнир\')">Присоединиться</button>
+                    <button class="btn-primary" onclick="joinTournament('monthly')">Присоединиться</button>
                 </div>
                 <div class="tournament-item">
                     <div class="tournament-icon">⭐</div>
@@ -588,7 +588,7 @@
                         <div class="tournament-desc">Вызови своего друга на 1v1 баттл</div>
                         <div class="tournament-status">🔵 Доступно</div>
                     </div>
-                    <button class="btn-primary" onclick="challengeFriend()">Вызвать</button>
+                    <button class="btn-primary" onclick="startDuel()">Вызвать</button>
                 </div>
             </div>
         </div>
@@ -617,6 +617,49 @@
                     <h3>💬 Чат</h3>
                     <p style="color: #999;">Общайся с игроками в глобальном чате</p>
                     <input type="text" placeholder="Напиши сообщение..." style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ddd; margin-top: 10px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ИГРА ТУРНИРА -->
+    <!-- ============================================ -->
+    <div id="tournamentGameScreen" class="screen">
+        <div class="game-container">
+            <h1>⚔️ Турнир</h1>
+            <div class="game-info">
+                <span>Ходов: <strong id="tournamentMoves">0</strong></span>
+                <span>Пар: <strong id="tournamentMatched">0</strong></span>
+            </div>
+            <div id="tournamentBoard" class="game-board tournament-board"></div>
+            <div style="text-align: center; margin-top: 20px;">
+                <button onclick="openSection('arena')" class="btn-secondary">⬅️ Выход</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ИГРА ДУЭЛИ -->
+    <!-- ============================================ -->
+    <div id="duelGameScreen" class="screen">
+        <div class="game-container">
+            <h1>⚔️ Дуэль</h1>
+            <div class="duel-game">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 15px; border-radius: 10px; color: white;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 18px; font-weight: bold;">👤 Ты</div>
+                        <div style="font-size: 24px; margin-top: 5px;" id="playerScore">0</div>
+                    </div>
+                    <div style="text-align: center; font-size: 20px;">VS</div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 18px; font-weight: bold;">🤖 Противник</div>
+                        <div style="font-size: 24px; margin-top: 5px;" id="opponentScore">0</div>
+                    </div>
+                </div>
+                <div id="duelBoard" class="game-board duel-board"></div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <button onclick="openSection('arena')" class="btn-secondary">⬅️ Выход</button>
                 </div>
             </div>
         </div>

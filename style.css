@@ -615,3 +615,98 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* ============================================ */
+/* ТУРНИРЫ И ДУЭЛИ */
+/* ============================================ */
+
+.tournament-board {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.tournament-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    border: 2px solid #667eea;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.tournament-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
+}
+
+.tournament-card.flipped {
+    background: linear-gradient(135deg, #f0f4ff 0%, #e8eef9 100%);
+    color: #333;
+    border-color: #667eea;
+}
+
+.tournament-card.matched {
+    background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
+    color: white;
+    border-color: #4caf50;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+}
+
+.duel-board {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.duel-card {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    border: 2px solid #ff6b6b;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.duel-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(255, 107, 107, 0.6);
+}
+
+.duel-card.flipped {
+    background: linear-gradient(135deg, #fff5f5 0%, #fff0f0 100%);
+    color: #333;
+    border-color: #ff6b6b;
+}
+
+.duel-card.matched {
+    background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
+    color: white;
+    border-color: #4caf50;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+}
+
+@media (max-width: 768px) {
+    .tournament-board {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .duel-board {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .tournament-board {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .duel-board {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .tournament-card,
+    .duel-card {
+        font-size: 24px;
+    }
+}
