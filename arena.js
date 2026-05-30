@@ -429,18 +429,16 @@ function flipDuelCard(index, cardElement) {
 }
 
 function simulateOpponentMove() {
-    // AI противник имитирует ход
-    const matchedCards = document.querySelectorAll('.matched').length;
-    const totalCards = gameState.cards.length;
-
-    // Вероятность успешного хода зависит от мастерства
-    if (Math.random() < matchOpponent.skill * 0.7) {
+    // AI противник делает ход с вероятностью на основе мастерства
+    // Вероятность получить пару и очко зависит от skill
+    if (Math.random() < matchOpponent.skill * 0.8) {
         matchScore.opponent++;
     }
 
     updateDuelUI();
 
-    if (gameState.matched === EMOJIS.length) {
+    // Проверяем, закончилась ли игра
+    if (gameState.matched >= EMOJIS.length) {
         completeDuel();
     }
 }
