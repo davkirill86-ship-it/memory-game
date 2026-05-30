@@ -413,8 +413,10 @@ function flipDuelCard(index, cardElement) {
             console.log('⏰ setTimeout сработал! gameState.flipped:', gameState.flipped);
             const [i1, i2] = gameState.flipped;
             console.log('⏰ После деструкт: i1=', i1, ', i2=', i2);
-            const card1 = document.querySelector(`[data-index="${i1}"]`);
-            const card2 = document.querySelector(`[data-index="${i2}"]`);
+            const allCards = document.querySelectorAll('.duel-card');
+            const card1 = allCards[i1];
+            const card2 = allCards[i2];
+            console.log('🔍 Ищу карточки по индексам: i1=', i1, ', i2=', i2, ', всего карточек=', allCards.length);
             console.log('⏰ card1 найдена:', !!card1, ', card2 найдена:', !!card2);
 
             if (gameState.cards[i1] === gameState.cards[i2]) {
