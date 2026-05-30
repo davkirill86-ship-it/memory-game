@@ -499,11 +499,142 @@ let remainingTime = 0;
 let lives = 3;
 
 
-function initClassicMode() {
-    // Классический режим - без ограничений
-    document.querySelector('.game-container h1').textContent = '🎮 Классический режим';
-    
-    const infoDiv = document.querySelector('.game-info');
-    infoDiv.innerHTML = `
+// ============================================
+// РЕЖИМЫ ИГРЫ
+// ============================================
+
+function playMode(modeName) {
+    console.log('🎮 Запускаем режим:', modeName);
+
+    switch(modeName) {
+        case 'Классический':
+            startClassicMode();
+            break;
+        case 'На время':
+            startTimedMode();
+            break;
+        case 'Выживание':
+            startSurvivalMode();
+            break;
+        case 'Блиц':
+            startBlitzMode();
+            break;
+    }
+}
+
+function startClassicMode() {
+    currentGameMode = 'classic';
+    showScreen('gameScreen');
+
+    const container = document.querySelector('.game-container');
+    if (container) {
+        container.style.background = 'linear-gradient(135deg, #f5f7ff 0%, #f0f4ff 100%)';
+    }
+
+    const title = document.querySelector('.game-container h1');
+    if (title) {
+        title.innerHTML = '🎮 Классический Режим';
+        title.style.color = '#4caf50';
+    }
+
+    resetGame();
+}
+
+function startTimedMode() {
+    currentGameMode = 'timed';
+    showScreen('gameScreen');
+
+    const container = document.querySelector('.game-container');
+    if (container) {
+        container.style.background = 'linear-gradient(135deg, #fff5f5 0%, #fff0f0 100%)';
+    }
+
+    const title = document.querySelector('.game-container h1');
+    if (title) {
+        title.innerHTML = '⏱️ Режим На Время (2 минуты)';
+        title.style.color = '#ff6b6b';
+    }
+
+    remainingTime = 120;
+    resetGame();
+    startTimer('timed');
+}
+
+function startSurvivalMode() {
+    currentGameMode = 'survival';
+    showScreen('gameScreen');
+
+    const container = document.querySelector('.game-container');
+    if (container) {
+        container.style.background = 'linear-gradient(135deg, #fff5f7 0%, #fff0f5 100%)';
+    }
+
+    const title = document.querySelector('.game-container h1');
+    if (title) {
+        title.innerHTML = '💔 Режим Выживание (3 ошибки)';
+        title.style.color = '#ff1744';
+    }
+
+    lives = 3;
+    resetGame();
+}
+
+function startBlitzMode() {
+    currentGameMode = 'blitz';
+    showScreen('gameScreen');
+
+    const container = document.querySelector('.game-container');
+    if (container) {
+        container.style.background = 'linear-gradient(135deg, #fffbf0 0%, #fff8f0 100%)';
+    }
+
+    const title = document.querySelector('.game-container h1');
+    if (title) {
+        title.innerHTML = '⚡ Режим Блиц (60 секунд)';
+        title.style.color = '#ffa500';
+    }
+
+    remainingTime = 60;
+    resetGame();
+    startTimer('blitz');
+}
+
+function startTimer(mode) {
+    if (gameTimer) clearInterval(gameTimer);
+
+    gameTimer = setInterval(() => {
+        remainingTime--;
+
+        const minutes = Math.floor(remainingTime / 60);
+        const seconds = remainingTime % 60;
+        const timerDisplay = document.getElementById('timerDisplay');
+
+        if (timerDisplay) {
+            timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            if (remainingTime <= 10) {
+                timerDisplay.style.color = '#ff6b6b';
+            }
+        }
+
+        if (remainingTime <= 0) {
+            clearInterval(gameTimer);
+            endTimedGame(mode);
+        }
+    }, 1000);
+}
+
+function endTimedGame(mode) {
+    clearInterval(gameTimer);
+
+    let message = '';
+    if (mode === 'timed') {
+        message = `⏰ Время вышло!\n\n✅ Найдено пар: ${gameState.matched}/6`;
+    } else if (mode === 'blitz') {
+        message = `⚡ Время вышло!\n\n✅ Найдено пар: ${gameState.matched}/6`;
+    }
+
+    alert(message);
+    showMainMenu();
+}
 
 console.log('✅ script.js загружен полностью');
