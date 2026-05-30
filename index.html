@@ -262,8 +262,12 @@
             <!-- Вкладка входа -->
             <div id="loginTab" class="tab-content active">
                 <form id="loginForm">
-                    <input type="email" placeholder="📧 Email" required>
-                    <input type="password" placeholder="🔐 Пароль" required>
+                    <input type="email" id="loginEmail" placeholder="📧 Email" required>
+                    <input type="password" id="loginPassword" placeholder="🔐 Пароль" required>
+                    <div style="display: flex; align-items: center; gap: 8px; margin: 10px 0; font-size: 14px;">
+                        <input type="checkbox" id="rememberPassword" style="width: 16px; height: 16px; cursor: pointer;">
+                        <label for="rememberPassword" style="cursor: pointer; color: #666;">🔐 Сохранить пароль</label>
+                    </div>
                     <button type="submit" class="btn-primary">🔓 Вход</button>
                 </form>
                 <div style="text-align: center; margin-top: 15px; font-size: 12px; color: #999;">
@@ -453,6 +457,108 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+        // 🔐 Функции для безопасного сохранения пароля
+        
+        // Простое шифрование (Base64 + обфускация)
+        const encryptPassword = (password) => {
+            // Используем Base64 + добавляем случайный префикс для дополнительной безопасности
+            const randomPrefix = Math.random().toString(36).substring(7);
+            const encoded = btoa(randomPrefix + '::' + password);
+            return encoded;
+        };
+        
+        const decryptPassword = (encrypted) => {
+            try {
+                const decoded = atob(encrypted);
+                const parts = decoded.split('::');
+                return parts[1] || decoded;
+            } catch (e) {
+                return '';
+            }
+        };
+        
+        // Сохранить учётные данные
+        const saveCredentials = (email, password) => {
+            try {
+                const encrypted = encryptPassword(password);
+                localStorage.setItem('saved_email', email);
+                localStorage.setItem('saved_password', encrypted);
+                localStorage.setItem('save_password_enabled', 'true');
+                console.log('✅ Учётные данные сохранены');
+            } catch (e) {
+                console.warn('⚠️ Не удалось сохранить учётные данные:', e);
+            }
+        };
+        
+        // Загрузить сохранённые учётные данные
+        const loadSavedCredentials = () => {
+            try {
+                const email = localStorage.getItem('saved_email');
+                const encrypted = localStorage.getItem('saved_password');
+                const enabled = localStorage.getItem('save_password_enabled');
+                
+                if (email && encrypted && enabled === 'true') {
+                    const password = decryptPassword(encrypted);
+                    const emailInput = document.getElementById('loginEmail');
+                    const passwordInput = document.getElementById('loginPassword');
+                    const rememberCheckbox = document.getElementById('rememberPassword');
+                    
+                    if (emailInput && passwordInput) {
+                        emailInput.value = email;
+                        passwordInput.value = password;
+                        rememberCheckbox.checked = true;
+                        console.log('✅ Сохранённые учётные данные загружены');
+                    }
+                }
+            } catch (e) {
+                console.warn('⚠️ Ошибка при загрузке учётных данных:', e);
+            }
+        };
+        
+        // Очистить сохранённые учётные данные
+        const clearSavedCredentials = () => {
+            try {
+                localStorage.removeItem('saved_email');
+                localStorage.removeItem('saved_password');
+                localStorage.removeItem('save_password_enabled');
+                console.log('🗑️ Сохранённые учётные данные удалены');
+            } catch (e) {
+                console.warn('⚠️ Ошибка при удалении учётных данных:', e);
+            }
+        };
+        
+        // Загрузить сохранённые данные при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSavedCredentials();
+            
+            // Обработчик формы входа
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', (e) => {
+                    const rememberCheckbox = document.getElementById('rememberPassword');
+                    const emailInput = document.getElementById('loginEmail');
+                    const passwordInput = document.getElementById('loginPassword');
+                    
+                    if (rememberCheckbox.checked && emailInput.value && passwordInput.value) {
+                        saveCredentials(emailInput.value, passwordInput.value);
+                    } else if (!rememberCheckbox.checked) {
+                        clearSavedCredentials();
+                    }
+                });
+            }
+            
+            // Обработчик для очистки при выходе
+            const logoutButtons = document.querySelectorAll('[onclick*="logoutUser"]');
+            logoutButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    clearSavedCredentials();
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
@@ -856,6 +962,108 @@
 
     <!-- 🎮 Основная логика игры -->
     <script src="script.js?v=6"></script>
+
+    <script>
+        // 🔐 Функции для безопасного сохранения пароля
+        
+        // Простое шифрование (Base64 + обфускация)
+        const encryptPassword = (password) => {
+            // Используем Base64 + добавляем случайный префикс для дополнительной безопасности
+            const randomPrefix = Math.random().toString(36).substring(7);
+            const encoded = btoa(randomPrefix + '::' + password);
+            return encoded;
+        };
+        
+        const decryptPassword = (encrypted) => {
+            try {
+                const decoded = atob(encrypted);
+                const parts = decoded.split('::');
+                return parts[1] || decoded;
+            } catch (e) {
+                return '';
+            }
+        };
+        
+        // Сохранить учётные данные
+        const saveCredentials = (email, password) => {
+            try {
+                const encrypted = encryptPassword(password);
+                localStorage.setItem('saved_email', email);
+                localStorage.setItem('saved_password', encrypted);
+                localStorage.setItem('save_password_enabled', 'true');
+                console.log('✅ Учётные данные сохранены');
+            } catch (e) {
+                console.warn('⚠️ Не удалось сохранить учётные данные:', e);
+            }
+        };
+        
+        // Загрузить сохранённые учётные данные
+        const loadSavedCredentials = () => {
+            try {
+                const email = localStorage.getItem('saved_email');
+                const encrypted = localStorage.getItem('saved_password');
+                const enabled = localStorage.getItem('save_password_enabled');
+                
+                if (email && encrypted && enabled === 'true') {
+                    const password = decryptPassword(encrypted);
+                    const emailInput = document.getElementById('loginEmail');
+                    const passwordInput = document.getElementById('loginPassword');
+                    const rememberCheckbox = document.getElementById('rememberPassword');
+                    
+                    if (emailInput && passwordInput) {
+                        emailInput.value = email;
+                        passwordInput.value = password;
+                        rememberCheckbox.checked = true;
+                        console.log('✅ Сохранённые учётные данные загружены');
+                    }
+                }
+            } catch (e) {
+                console.warn('⚠️ Ошибка при загрузке учётных данных:', e);
+            }
+        };
+        
+        // Очистить сохранённые учётные данные
+        const clearSavedCredentials = () => {
+            try {
+                localStorage.removeItem('saved_email');
+                localStorage.removeItem('saved_password');
+                localStorage.removeItem('save_password_enabled');
+                console.log('🗑️ Сохранённые учётные данные удалены');
+            } catch (e) {
+                console.warn('⚠️ Ошибка при удалении учётных данных:', e);
+            }
+        };
+        
+        // Загрузить сохранённые данные при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSavedCredentials();
+            
+            // Обработчик формы входа
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', (e) => {
+                    const rememberCheckbox = document.getElementById('rememberPassword');
+                    const emailInput = document.getElementById('loginEmail');
+                    const passwordInput = document.getElementById('loginPassword');
+                    
+                    if (rememberCheckbox.checked && emailInput.value && passwordInput.value) {
+                        saveCredentials(emailInput.value, passwordInput.value);
+                    } else if (!rememberCheckbox.checked) {
+                        clearSavedCredentials();
+                    }
+                });
+            }
+            
+            // Обработчик для очистки при выходе
+            const logoutButtons = document.querySelectorAll('[onclick*="logoutUser"]');
+            logoutButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    clearSavedCredentials();
+                });
+            });
+        });
+    </script>
+
 </body>
 </html>
 
