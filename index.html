@@ -445,25 +445,36 @@
                 <button onclick="showMainMenu()" class="btn-secondary">⬅️ Назад</button>
             </div>
             <div class="cosmetics-grid">
-                <div class="cosmetic-item selected">
+                <!-- Классический скин (разблокирован) -->
+                <div class="cosmetic-item selected" data-skin-id="default">
                     <div class="cosmetic-preview" style="background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);"></div>
                     <div class="cosmetic-name">Классический</div>
                     <div class="cosmetic-status">✅ Активен</div>
+                    <button class="btn-primary" disabled style="width: 100%; margin-top: 8px; opacity: 0.7;">✅ Активен</button>
                 </div>
-                <div class="cosmetic-item">
+
+                <!-- Фиолетовый скин -->
+                <div class="cosmetic-item" data-skin-id="purple">
                     <div class="cosmetic-preview" style="background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%);"></div>
                     <div class="cosmetic-name">Фиолетовый</div>
-                    <button class="btn-primary" onclick="selectCosmetic(this.parentElement.querySelector(\'.cosmetic-name\').textContent)" style="width: 100%; margin-top: 8px;">Разблокировать</button>
+                    <div class="cosmetic-status">🔒 500 очков</div>
+                    <button class="btn-primary" onclick="unlockSkin('purple')" style="width: 100%; margin-top: 8px;">Разблокировать</button>
                 </div>
-                <div class="cosmetic-item">
+
+                <!-- Синий скин -->
+                <div class="cosmetic-item" data-skin-id="blue">
                     <div class="cosmetic-preview" style="background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);"></div>
                     <div class="cosmetic-name">Синий</div>
-                    <button class="btn-primary" onclick="selectCosmetic(this.parentElement.querySelector(\'.cosmetic-name\').textContent)" style="width: 100%; margin-top: 8px;">Разблокировать</button>
+                    <div class="cosmetic-status">🔒 500 очков</div>
+                    <button class="btn-primary" onclick="unlockSkin('blue')" style="width: 100%; margin-top: 8px;">Разблокировать</button>
                 </div>
-                <div class="cosmetic-item">
+
+                <!-- Золотой скин -->
+                <div class="cosmetic-item" data-skin-id="gold">
                     <div class="cosmetic-preview" style="background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);"></div>
                     <div class="cosmetic-name">Золотой</div>
-                    <button class="btn-primary" onclick="selectCosmetic(this.parentElement.querySelector(\'.cosmetic-name\').textContent)" style="width: 100%; margin-top: 8px;">Разблокировать</button>
+                    <div class="cosmetic-status">🔒 1000 очков</div>
+                    <button class="btn-primary" onclick="unlockSkin('gold')" style="width: 100%; margin-top: 8px;">Разблокировать</button>
                 </div>
             </div>
         </div>

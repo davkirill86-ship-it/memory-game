@@ -176,6 +176,9 @@ function setupGameBoard() {
     // Создаем пары карточек
     gameState.cards = [...EMOJIS, ...EMOJIS].sort(() => Math.random() - 0.5);
 
+    // Получаем выбранный скин
+    const selectedSkin = getSelectedSkin();
+
     board.innerHTML = '';
     gameState.cards.forEach((emoji, index) => {
         const card = document.createElement('div');
@@ -183,9 +186,27 @@ function setupGameBoard() {
         card.textContent = '?';
         card.dataset.index = index;
         card.dataset.emoji = emoji;
+
+        // Применяем скин к карточке
+        card.style.background = `linear-gradient(135deg, ${selectedSkin.color} 0%, ${adjustBrightness(selectedSkin.color, -10)} 100%)`;
+        card.style.color = 'white';
+
         card.addEventListener('click', () => flipCard(index, card));
         board.appendChild(card);
     });
+}
+
+// Вспомогательная функция для изменения яркости цвета
+function adjustBrightness(color, percent) {
+    const num = parseInt(color.replace("#",""), 16);
+    const amt = Math.round(2.55 * percent);
+    const R = (num >> 16) + amt;
+    const G = (num >> 8 & 0x00FF) + amt;
+    const B = (num & 0x0000FF) + amt;
+    return "#" + (0x1000000 + (R<255?R<1?0:R:255)*0x10000 +
+        (G<255?G<1?0:G:255)*0x100 +
+        (B<255?B<1?0:B:255))
+        .toString(16).slice(1);
 }
 
 function flipCard(index, cardElement) {
