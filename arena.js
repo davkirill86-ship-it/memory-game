@@ -385,13 +385,25 @@ function setupDuelBoard() {
 }
 
 function flipDuelCard(index, cardElement) {
-    if (gameState.flipped.length >= 2) return;
-    if (gameState.flipped.includes(index)) return;
-    if (cardElement.classList.contains('matched')) return;
+    console.log('📌 flipDuelCard:', index, 'flipped length:', gameState.flipped.length);
+
+    if (gameState.flipped.length >= 2) {
+        console.log('⛔ Уже 2 карточки открыты');
+        return;
+    }
+    if (gameState.flipped.includes(index)) {
+        console.log('⛔ Эта карточка уже открыта');
+        return;
+    }
+    if (cardElement.classList.contains('matched')) {
+        console.log('⛔ Карточка уже совпала');
+        return;
+    }
 
     gameState.flipped.push(index);
     cardElement.textContent = gameState.cards[index];
     cardElement.classList.add('flipped');
+    console.log('✅ Карточка открыта, flipped count:', gameState.flipped.length);
 
     if (gameState.flipped.length === 2) {
         gameState.moves++;
