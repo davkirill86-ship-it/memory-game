@@ -65,6 +65,14 @@ function loginUser(e) {
     if (savedUser) {
         const user = JSON.parse(savedUser);
         if (user.password === password) {
+            // 🔐 Сохраняем пароль если галочка стоит
+            const rememberCheckbox = document.getElementById('rememberPassword');
+            if (rememberCheckbox && rememberCheckbox.checked) {
+                saveCredentials(email, password);
+            } else {
+                clearSavedCredentials();
+            }
+            
             loginSuccess(user);
         } else {
             alert('❌ Неправильный пароль');
@@ -165,6 +173,7 @@ function logoutUser() {
     if (confirm('🚪 Вы уверены что хотите выйти?')) {
         currentUser = null;
         localStorage.removeItem('currentUser');
+        clearSavedCredentials(); // 🔐 Очищаем сохранённый пароль
         showScreen('authScreen');
     }
 }
