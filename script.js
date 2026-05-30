@@ -283,13 +283,26 @@ if (resetButton) {
 // НАВИГАЦИЯ МЕНЮ
 // ============================================
 
+// Функция openSection теперь работает со всеми разделами
 function openSection(section) {
-    if (section === 'game') {
-        showScreen('gameScreen');
-        resetGame();
-    } else {
-        alert(`📦 Раздел "${section}" еще в разработке!\n\nВскоре появятся:\n✅ Достижения\n✅ Челленджи\n✅ Лидерборды\n✅ Косметика\n✅ Наборы карт\n✅ Режимы игры\n✅ Арена\n✅ Социум`);
-        showScreen('mainMenuScreen');
+    const screenMap = {
+        'game': 'gameScreen',
+        'achievements': 'achievementsScreen',
+        'challenges': 'challengesScreen',
+        'leaderboards': 'leaderboardsScreen',
+        'cosmetics': 'cosmeticsScreen',
+        'card-sets': 'cardSetsScreen',
+        'modes': 'modesScreen',
+        'arena': 'arenaScreen',
+        'social': 'socialScreen'
+    };
+
+    const screenId = screenMap[section];
+    if (screenId) {
+        showScreen(screenId);
+        if (section === 'game') {
+            resetGame();
+        }
     }
 }
 

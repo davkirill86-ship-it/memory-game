@@ -342,3 +342,283 @@
     <script src="social-quests.js"></script>
 </body>
 </html>
+
+    <!-- ============================================ -->
+    <!-- ЭКРАН ДОСТИЖЕНИЙ -->
+    <!-- ============================================ -->
+    <div id="achievementsScreen" class="screen">
+        <div class="section-container">
+            <div class="section-header">
+                <h1>🎖️ Достижения</h1>
+                <button onclick="showMainMenu()" class="btn-secondary">⬅️ Назад</button>
+            </div>
+            <div class="achievements-list">
+                <div class="achievement-item">🎮 Первая игра - разблокирована</div>
+                <div class="achievement-item">⚡ Молния (выигри за 20 ходов) - 50 очков</div>
+                <div class="achievement-item">🎯 Идеальное совпадение (без ошибок) - 100 очков</div>
+                <div class="achievement-item">🏃 Спринтер (выигри за 15 ходов) - 75 очков</div>
+                <div class="achievement-item">🎖️ Уровень 5 - 200 очков</div>
+                <div class="achievement-item">🏆 Коллекционер (10+ наборов) - 150 очков</div>
+                <div class="achievement-item">🦋 Социальная бабочка (5+ друзей) - 100 очков</div>
+                <div class="achievement-item">🔥 Король стриков (10 побед подряд) - 250 очков</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ЭКРАН ЧЕЛЛЕНДЖЕЙ -->
+    <!-- ============================================ -->
+    <div id="challengesScreen" class="screen">
+        <div class="section-container">
+            <div class="section-header">
+                <h1>📅 Челленджи</h1>
+                <button onclick="showMainMenu()" class="btn-secondary">⬅️ Назад</button>
+            </div>
+            <div class="challenges-list">
+                <div class="challenge-item">
+                    <div class="challenge-title">🎮 Утренняя игра</div>
+                    <div class="challenge-desc">Сыграй первую игру дня - 10 очков</div>
+                    <div class="challenge-progress">Прогресс: <strong>1/1</strong> ✅</div>
+                </div>
+                <div class="challenge-item">
+                    <div class="challenge-title">⚡ Быстрый умник</div>
+                    <div class="challenge-desc">Выигри за менее чем 25 ходов - 20 очков</div>
+                    <div class="challenge-progress">Прогресс: <strong>0/1</strong></div>
+                </div>
+                <div class="challenge-item">
+                    <div class="challenge-title">🏆 Тройной удар</div>
+                    <div class="challenge-desc">Выигри 3 раза подряд - 30 очков</div>
+                    <div class="challenge-progress">Прогресс: <strong>0/3</strong></div>
+                </div>
+                <div class="challenge-item">
+                    <div class="challenge-title">🔥 Неделя чемпиона</div>
+                    <div class="challenge-desc">Выигри 7 раз за неделю - 100 очков</div>
+                    <div class="challenge-progress">Прогресс: <strong>1/7</strong></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ЭКРАН ЛИДЕРБОРДОВ -->
+    <!-- ============================================ -->
+    <div id="leaderboardsScreen" class="screen">
+        <div class="section-container">
+            <div class="section-header">
+                <h1>🏆 Лидерборды</h1>
+                <button onclick="showMainMenu()" class="btn-secondary">⬅️ Назад</button>
+            </div>
+            <div class="leaderboard-list">
+                <div style="font-weight: bold; margin-bottom: 15px; color: #667eea;">🌍 ГЛОБАЛЬНЫЕ</div>
+                <div class="leaderboard-item">
+                    <span class="rank">🥇 1.</span>
+                    <span class="name">Демо Игрок</span>
+                    <span class="score">2500 очков</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span class="rank">🥈 2.</span>
+                    <span class="name">Супер Герой</span>
+                    <span class="score">2100 очков</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span class="rank">🥉 3.</span>
+                    <span class="name">Мега Чемпион</span>
+                    <span class="score">1850 очков</span>
+                </div>
+                <div style="font-weight: bold; margin-top: 20px; margin-bottom: 10px; color: #764ba2;">👥 МОИ ДРУЗЬЯ</div>
+                <div class="leaderboard-item">
+                    <span class="rank">⭐</span>
+                    <span class="name">Ты в списке друзей нет</span>
+                    <span class="score">-</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ЭКРАН КОСМЕТИКИ -->
+    <!-- ============================================ -->
+    <div id="cosmeticsScreen" class="screen">
+        <div class="section-container">
+            <div class="section-header">
+                <h1>🎨 Косметика</h1>
+                <button onclick="showMainMenu()" class="btn-secondary">⬅️ Назад</button>
+            </div>
+            <div class="cosmetics-grid">
+                <div class="cosmetic-item selected">
+                    <div class="cosmetic-preview" style="background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);"></div>
+                    <div class="cosmetic-name">Классический</div>
+                    <div class="cosmetic-status">✅ Активен</div>
+                </div>
+                <div class="cosmetic-item">
+                    <div class="cosmetic-preview" style="background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%);"></div>
+                    <div class="cosmetic-name">Фиолетовый</div>
+                    <div class="cosmetic-status">Заблокирован</div>
+                </div>
+                <div class="cosmetic-item">
+                    <div class="cosmetic-preview" style="background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);"></div>
+                    <div class="cosmetic-name">Синий</div>
+                    <div class="cosmetic-status">Заблокирован</div>
+                </div>
+                <div class="cosmetic-item">
+                    <div class="cosmetic-preview" style="background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);"></div>
+                    <div class="cosmetic-name">Золотой</div>
+                    <div class="cosmetic-status">Заблокирован</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ЭКРАН НАБОРОВ КАРТ -->
+    <!-- ============================================ -->
+    <div id="cardSetsScreen" class="screen">
+        <div class="section-container">
+            <div class="section-header">
+                <h1>🔀 Наборы Карт</h1>
+                <button onclick="showMainMenu()" class="btn-secondary">⬅️ Назад</button>
+            </div>
+            <div class="cardsets-grid">
+                <div class="cardset-item unlocked">
+                    <div class="cardset-icon">🐾</div>
+                    <div class="cardset-name">Животные</div>
+                    <div class="cardset-count">8 карт</div>
+                    <div class="cardset-status">✅ Разблокирован</div>
+                </div>
+                <div class="cardset-item locked">
+                    <div class="cardset-icon">🍕</div>
+                    <div class="cardset-name">Еда</div>
+                    <div class="cardset-count">8 карт</div>
+                    <div class="cardset-status">🔒 Заблокирован</div>
+                </div>
+                <div class="cardset-item locked">
+                    <div class="cardset-icon">🌲</div>
+                    <div class="cardset-name">Природа</div>
+                    <div class="cardset-count">8 карт</div>
+                    <div class="cardset-status">🔒 Заблокирован</div>
+                </div>
+                <div class="cardset-item locked">
+                    <div class="cardset-icon">⚽</div>
+                    <div class="cardset-name">Спорт</div>
+                    <div class="cardset-count">8 карт</div>
+                    <div class="cardset-status">🔒 Заблокирован</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ЭКРАН РЕЖИМОВ -->
+    <!-- ============================================ -->
+    <div id="modesScreen" class="screen">
+        <div class="section-container">
+            <div class="section-header">
+                <h1>⏱️ Режимы Игры</h1>
+                <button onclick="showMainMenu()" class="btn-secondary">⬅️ Назад</button>
+            </div>
+            <div class="modes-list">
+                <div class="mode-item">
+                    <div class="mode-icon">🎮</div>
+                    <div class="mode-info">
+                        <div class="mode-title">Классический</div>
+                        <div class="mode-desc">Найди все пары без ограничений по времени</div>
+                    </div>
+                    <button class="btn-primary">Играть</button>
+                </div>
+                <div class="mode-item">
+                    <div class="mode-icon">⏱️</div>
+                    <div class="mode-info">
+                        <div class="mode-title">На время</div>
+                        <div class="mode-desc">Выигри за 2 минуты</div>
+                    </div>
+                    <button class="btn-primary">Играть</button>
+                </div>
+                <div class="mode-item">
+                    <div class="mode-icon">💔</div>
+                    <div class="mode-info">
+                        <div class="mode-title">Выживание</div>
+                        <div class="mode-desc">У тебя есть 3 ошибки</div>
+                    </div>
+                    <button class="btn-primary">Играть</button>
+                </div>
+                <div class="mode-item">
+                    <div class="mode-icon">⚡</div>
+                    <div class="mode-info">
+                        <div class="mode-title">Блиц</div>
+                        <div class="mode-desc">Найди пары за 60 секунд</div>
+                    </div>
+                    <button class="btn-primary">Играть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ЭКРАН АРЕНЫ -->
+    <!-- ============================================ -->
+    <div id="arenaScreen" class="screen">
+        <div class="section-container">
+            <div class="section-header">
+                <h1>⚔️ Арена</h1>
+                <button onclick="showMainMenu()" class="btn-secondary">⬅️ Назад</button>
+            </div>
+            <div class="arena-tournaments">
+                <div class="tournament-item">
+                    <div class="tournament-icon">🏆</div>
+                    <div class="tournament-info">
+                        <div class="tournament-title">Еженедельный турнир</div>
+                        <div class="tournament-desc">Участвуй и выигрывай до 1000 очков</div>
+                        <div class="tournament-status">🔴 Активен</div>
+                    </div>
+                    <button class="btn-primary">Присоединиться</button>
+                </div>
+                <div class="tournament-item">
+                    <div class="tournament-icon">👑</div>
+                    <div class="tournament-info">
+                        <div class="tournament-title">Ежемесячный турнир</div>
+                        <div class="tournament-desc">Большой турнир с призом 5000 очков</div>
+                        <div class="tournament-status">🔴 Активен</div>
+                    </div>
+                    <button class="btn-primary">Присоединиться</button>
+                </div>
+                <div class="tournament-item">
+                    <div class="tournament-icon">⭐</div>
+                    <div class="tournament-info">
+                        <div class="tournament-title">Дуэль с другом</div>
+                        <div class="tournament-desc">Вызови своего друга на 1v1 баттл</div>
+                        <div class="tournament-status">🔵 Доступно</div>
+                    </div>
+                    <button class="btn-primary">Вызвать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ЭКРАН СОЦИУМА -->
+    <!-- ============================================ -->
+    <div id="socialScreen" class="screen">
+        <div class="section-container">
+            <div class="section-header">
+                <h1>👥 Социум</h1>
+                <button onclick="showMainMenu()" class="btn-secondary">⬅️ Назад</button>
+            </div>
+            <div class="social-content">
+                <div class="social-section">
+                    <h3>👫 Друзья</h3>
+                    <p style="color: #999;">У тебя пока нет друзей. Пригласи их через код: <strong>DEMO2024</strong></p>
+                    <button class="btn-primary" style="width: 100%; margin-top: 10px;">➕ Пригласить друга</button>
+                </div>
+                <div class="social-section">
+                    <h3>📝 Совместные квесты</h3>
+                    <p style="color: #999;">Доступно после добавления друзей</p>
+                </div>
+                <div class="social-section">
+                    <h3>💬 Чат</h3>
+                    <p style="color: #999;">Общайся с игроками в глобальном чате</p>
+                    <input type="text" placeholder="Напиши сообщение..." style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ddd; margin-top: 10px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
