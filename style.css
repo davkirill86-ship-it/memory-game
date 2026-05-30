@@ -863,9 +863,13 @@ body {
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
     z-index: 9999 !important;
-    display: flex !important;
+    display: none !important;
     justify-content: center;
     align-items: center;
+}
+
+.opponent-modal-overlay.active {
+    display: flex !important;
 }
 
 .opponent-modal-content {

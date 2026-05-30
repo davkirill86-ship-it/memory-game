@@ -253,7 +253,7 @@ function showFindOpponentModal() {
     });
 
     // Показываем модальное окно и таймер
-    modal.style.display = 'flex';
+    modal.classList.add('active');
     timerDisplay.style.display = 'block';
     opponentTimeRemaining = 30;
 
@@ -301,7 +301,7 @@ function closeFindOpponentModal() {
     const modal = document.getElementById('findOpponentModal');
     const timerDisplay = document.getElementById('opponentTimer');
     if (modal) {
-        modal.style.display = 'none';
+        modal.classList.remove('active');
     }
     if (timerDisplay) {
         timerDisplay.style.display = 'none';
