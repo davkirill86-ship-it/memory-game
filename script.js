@@ -704,13 +704,23 @@ function endTimedGame(mode) {
 }
 
 function showGameEndModal(title, message) {
-    // Временно используем alert пока модальное окно не заработает
-    alert(title + '\n\n' + message);
-    showMainMenu();
+    const modal = document.getElementById('gameEndModalOverlay');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalMessage = document.getElementById('modalMessage');
+
+    if (modal && modalTitle && modalMessage) {
+        modalTitle.textContent = title;
+        modalMessage.textContent = message;
+        modal.style.display = 'flex';
+    }
 }
 
 function closeGameEndModal() {
-    // Пусто - alert закрывается автоматически
+    const modal = document.getElementById('gameEndModalOverlay');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+    showMainMenu();
 }
 
 console.log('✅ script.js загружен полностью');
