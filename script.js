@@ -600,9 +600,7 @@ function startTimedMode() {
     // Показываем таймер
     const timerContainer = document.getElementById('timerContainer');
     if (timerContainer) {
-        timerContainer.style.display = 'flex';
-        timerContainer.style.flexDirection = 'column';
-        timerContainer.style.alignItems = 'center';
+        timerContainer.style.display = '';  // Использует CSS по умолчанию
     }
 
     remainingTime = 120;
@@ -653,9 +651,7 @@ function startBlitzMode() {
     // Показываем таймер
     const timerContainer = document.getElementById('timerContainer');
     if (timerContainer) {
-        timerContainer.style.display = 'flex';
-        timerContainer.style.flexDirection = 'column';
-        timerContainer.style.alignItems = 'center';
+        timerContainer.style.display = '';  // Использует CSS по умолчанию
     }
 
     remainingTime = 60;
