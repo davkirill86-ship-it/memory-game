@@ -419,14 +419,25 @@ function flipDuelCard(index, cardElement) {
                 // Карточки не совпадают - закрываем их
                 console.log('❌ Карточки не совпадают, закрываем:', card1.textContent, card2.textContent);
 
+                // Явно закрываем карточки
                 card1.textContent = '?';
                 card2.textContent = '?';
-                card1.classList.remove('flipped');
-                card2.classList.remove('flipped');
+
+                // Установляем красный фон (закрытое состояние)
+                card1.style.background = 'linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%)';
+                card2.style.background = 'linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%)';
+
+                // Белый текст
                 card1.style.color = 'white';
                 card2.style.color = 'white';
+
+                // Размер шрифта
                 card1.style.fontSize = '32px';
                 card2.style.fontSize = '32px';
+
+                // Удаляем класс flipped
+                card1.classList.remove('flipped');
+                card2.classList.remove('flipped');
 
                 gameState.flipped = [];
                 updateDuelUI();
