@@ -136,6 +136,18 @@ function restoreSession() {
 }
 
 function showMainMenu() {
+    // Скрываем таймер
+    const timerContainer = document.getElementById('timerContainer');
+    if (timerContainer) {
+        timerContainer.style.display = 'none';
+    }
+
+    // Очищаем интервал таймера
+    if (gameTimer) {
+        clearInterval(gameTimer);
+        gameTimer = null;
+    }
+
     showScreen('mainMenuScreen');
     if (currentUser) {
         const userName = document.getElementById('userName');
@@ -561,6 +573,12 @@ function startClassicMode() {
         title.style.color = '#4caf50';
     }
 
+    // Скрываем таймер
+    const timerContainer = document.getElementById('timerContainer');
+    if (timerContainer) {
+        timerContainer.style.display = 'none';
+    }
+
     resetGame();
 }
 
@@ -577,6 +595,14 @@ function startTimedMode() {
     if (title) {
         title.innerHTML = '⏱️ Режим На Время (2 минуты)';
         title.style.color = '#ff6b6b';
+    }
+
+    // Показываем таймер
+    const timerContainer = document.getElementById('timerContainer');
+    if (timerContainer) {
+        timerContainer.style.display = 'flex';
+        timerContainer.style.flexDirection = 'column';
+        timerContainer.style.alignItems = 'center';
     }
 
     remainingTime = 120;
@@ -599,6 +625,12 @@ function startSurvivalMode() {
         title.style.color = '#ff1744';
     }
 
+    // Скрываем таймер
+    const timerContainer = document.getElementById('timerContainer');
+    if (timerContainer) {
+        timerContainer.style.display = 'none';
+    }
+
     lives = 3;
     resetGame();
 }
@@ -616,6 +648,14 @@ function startBlitzMode() {
     if (title) {
         title.innerHTML = '⚡ Режим Блиц (60 секунд)';
         title.style.color = '#ffa500';
+    }
+
+    // Показываем таймер
+    const timerContainer = document.getElementById('timerContainer');
+    if (timerContainer) {
+        timerContainer.style.display = 'flex';
+        timerContainer.style.flexDirection = 'column';
+        timerContainer.style.alignItems = 'center';
     }
 
     remainingTime = 60;
