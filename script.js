@@ -131,7 +131,11 @@ function restoreSession() {
             showMainMenu();
         } catch (e) {
             console.log('Ошибка восстановления сессии');
+            showScreen('authScreen');
         }
+    } else {
+        // Если нет сохранённой сессии, показываем auth экран
+        showScreen('authScreen');
     }
 }
 
