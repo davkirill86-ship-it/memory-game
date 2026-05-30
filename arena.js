@@ -417,15 +417,21 @@ function flipDuelCard(index, cardElement) {
                 }
             } else {
                 // Карточки не совпадают - закрываем их
+                console.log('❌ Карточки не совпадают, закрываем:', card1.textContent, card2.textContent);
+
                 card1.textContent = '?';
                 card2.textContent = '?';
                 card1.classList.remove('flipped');
                 card2.classList.remove('flipped');
                 card1.style.color = 'white';
                 card2.style.color = 'white';
-                gameState.flipped = [];
+                card1.style.fontSize = '32px';
+                card2.style.fontSize = '32px';
 
-                setTimeout(() => simulateOpponentMove(), 500);
+                gameState.flipped = [];
+                updateDuelUI();
+
+                setTimeout(() => simulateOpponentMove(), 1000);
             }
         }, 600);
     }
